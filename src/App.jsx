@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import Header from "./Header/Header";
 import { BrowserRouter, Route, Routes } from "react-router";
 import Homepege from "./Homepage/Homepage";
-import Blog from "./Blog/blog";
+import Blog from "./Blog/Blog";
 import Post from "./Blog/Post";
 
 function App() {

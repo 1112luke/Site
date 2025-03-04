@@ -56,7 +56,7 @@ export default function Post1() {
                     <strong>both</strong> of these problems.
                 </p>
                 <p>
-                    The first problem is docker's bread and butter. Docker fixex
+                    The first problem is docker's bread and butter. Docker fixes
                     the age old problem: "I promise it works on my machine." I
                     like to think about docker like a virtual machine, except
                     instead of allowing compatibility among operating systems,
