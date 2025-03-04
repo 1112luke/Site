@@ -1,4 +1,3 @@
-import Planecontroller from "../assets/Plane/Planecontroller";
 import "./header.css";
 import Headernav from "./Headernav";
 import { Link } from "react-router";
