@@ -1,0 +1,45 @@
+#header{
+height: 60px;
+width:100%;
+display:flex;
+}
+
+.centerbox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+
+a{
+    color:white
+}
+
+#headerleft{
+flex:1;
+font-size:30px;
+justify-content: left;
+padding-left:20px;
+color:var(--yellow);
+}
+
+#headercenter{
+flex:0
+}
+
+#headerright{
+flex:1;
+}
+
+#headernav{
+    width:100%;
+    display:flex;
+    justify-content: right;
+    align-items: center;
+    padding:20px;
+}
+.navobject{
+    margin:1vw;
+    font-size: 25px;
+    color:white;
+}
