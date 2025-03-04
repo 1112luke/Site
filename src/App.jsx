@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Homepege from "./Homepage/Homepage";
 import Blog from "./Blog/Blog";
 import Post from "./Blog/Post";
+import posts from "./Blog/Posts/Posts";
 
 function App() {
     return (
@@ -13,7 +14,14 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Homepege></Homepege>}></Route>
                     <Route path="/blog" element={<Blog></Blog>}></Route>
-                    <Route path="/blog/:id" element={<Post></Post>}></Route>
+                    {posts.map((post) => {
+                        return (
+                            <Route
+                                path={`/blog/${post.id}`}
+                                element={<Post></Post>}
+                            ></Route>
+                        );
+                    })}
                 </Routes>
             </BrowserRouter>
         </>
