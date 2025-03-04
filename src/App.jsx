@@ -14,14 +14,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Homepege></Homepege>}></Route>
                     <Route path="/blog" element={<Blog></Blog>}></Route>
-                    {posts.map((post) => {
-                        return (
-                            <Route
-                                path={`/blog/${post.id}`}
-                                element={<Post></Post>}
-                            ></Route>
-                        );
-                    })}
+                    <Route path="/blog/:id" element={<Post></Post>}></Route>
                 </Routes>
             </BrowserRouter>
         </>
