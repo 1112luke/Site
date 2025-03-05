@@ -18,7 +18,7 @@
         "motion": "^12.4.7",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
-        "react-latex-next": "^3.0.0",
+        "react-latex": "^2.0.0",
         "react-router": "^7.2.0",
         "react-syntax-highlighter": "^15.6.1",
         "react-test-renderer": "^18.3.1",

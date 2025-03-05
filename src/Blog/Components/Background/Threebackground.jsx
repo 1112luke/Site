@@ -32,6 +32,9 @@ const ThreeBackground = () => {
 
     return (
         <Canvas
+            gl={{
+                pixelRatio: 20,
+            }}
             style={{
                 position: "fixed",
                 top: 0,
