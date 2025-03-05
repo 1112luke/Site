@@ -136,7 +136,16 @@ CMD ["python", "./Drone.py"]`}</SyntaxHighlighter>
                             >
                                 official python docker image{" "}
                             </a>
-                            which can be found on Docker hub.
+                            which can be found on Docker hub. The, using RUN,
+                            the Dockerfile installs the system dependencies
+                            required for my environment. Next, it uses WORKDIR.
+                            This is the Dockerfile of cd and I use it to ensure
+                            I am in the root directory of the machine. I then
+                            copy requirements.txt from the directory of the
+                            dockerfile to the machine, install the python
+                            requirements by with RUN, and finally copy the rest
+                            of the directory and specify the entry point with
+                            CMD.
                         </p>
                     </li>
                     <li>Images</li>
@@ -149,7 +158,7 @@ CMD ["python", "./Drone.py"]`}</SyntaxHighlighter>
                         Using Docker build, build the code with the following:
                     </li>
                     <SyntaxHighlighter language="bash" id="syntax">
-                        {`sudo docker build -t 1112luke/drone . \nsudo docker push 1112luke/drone`}
+                        {`$ sudo docker build -t 1112luke/drone . \n$ sudo docker push 1112luke/drone`}
                     </SyntaxHighlighter>
                 </ol>
             </div>

@@ -4,6 +4,11 @@
   --yellow: #FFC600;
 }
 
+::selection{
+  color: var(--darkblue);
+  background: var(--yellow)
+}
+
 html{
   background-color: var(--darkblue);
   color: white;
