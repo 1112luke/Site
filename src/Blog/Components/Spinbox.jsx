@@ -76,17 +76,17 @@ export default function Spinbox() {
                     ]}
                 >
                     <mesh>
-                        <boxGeometry args={[3.5, 3.5, 3.5]} />
+                        <boxGeometry args={[3, 3, 3]} />
                         <meshStandardMaterial wireframe color="yellow" />
                     </mesh>
                     <Html
-                        scale={0.7}
+                        scale={0.6}
                         style={{
                             width: "200px",
                             height: "200px",
                             zIndex: "5",
                         }}
-                        position={[0, 0, 1.78]}
+                        position={[0, 0, 1.51]}
                         transform
                         occlude
                     >
@@ -103,7 +103,8 @@ export default function Spinbox() {
                             }}
                             width="200px"
                             draggable={false}
-                            src="https://media.licdn.com/dms/image/v2/D4E03AQHEazpdvufamQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1716318374422?e=1746662400&v=beta&t=VbL1eUEIZVmlo2RFV8X38GQSTXZRVjvrr1YwGEMWE10"
+                            src="/Me.jpeg"
+                            style={{ aspectRatio: 1 / 1 }}
                         ></img>
                     </Html>
                 </group>
