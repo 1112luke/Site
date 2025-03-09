@@ -1,0 +1,16 @@
+.svglayers{
+    aspect-ratio: 960/175;
+    width:100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    background-image: url("../../public/Footer.svg");
+}
+
+.container{
+    height:12rem;
+    background-color: var(--yellow);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

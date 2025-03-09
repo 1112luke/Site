@@ -3,6 +3,7 @@ import "../App.css";
 import Card from "./Card";
 import posts from "./Posts/Posts";
 import ThreeBackground from "./Components/Background/Threebackground";
+import Footer from "../Footer/Footer";
 
 export default function Blog() {
     return (
@@ -26,6 +27,7 @@ export default function Blog() {
                     );
                 })}
             </div>
+            <Footer></Footer>
         </>
     );
 }

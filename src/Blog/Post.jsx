@@ -39,9 +39,7 @@ export default function Post() {
                     <hr
                         style={{ border: "1px solid #FFC600", width: "70%" }}
                     ></hr>
-                    <div className="widthwrapper">
-                        <div>{currpost.component}</div>
-                    </div>
+                    <div className="widthwrapper">{currpost.component}</div>
                 </>
             )}
         </>

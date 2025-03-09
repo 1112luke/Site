@@ -86,7 +86,7 @@ export default function Spinbox() {
                             height: "200px",
                             zIndex: "5",
                         }}
-                        position={[0, 0, 1.76]}
+                        position={[0, 0, 1.78]}
                         transform
                         occlude
                     >
@@ -102,6 +102,7 @@ export default function Spinbox() {
                                 cubesize.set(1);
                             }}
                             width="200px"
+                            draggable={false}
                             src="https://media.licdn.com/dms/image/v2/D4E03AQHEazpdvufamQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1716318374422?e=1746662400&v=beta&t=VbL1eUEIZVmlo2RFV8X38GQSTXZRVjvrr1YwGEMWE10"
                         ></img>
                     </Html>
