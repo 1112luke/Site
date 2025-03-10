@@ -18,6 +18,19 @@ export default function Spinbox({ hovered }) {
 
     var first = useRef(true);
 
+    //smooth cube lookaround
+    var mouseposmotx = useMotionValue(0);
+    var smoothmousex = useSpring(mouseposmotx, {
+        stiffness: 450,
+        damping: 10,
+    });
+
+    var mouseposmoty = useMotionValue(0);
+    var smoothmousey = useSpring(mouseposmoty, {
+        stiffness: 450,
+        damping: 10,
+    });
+
     const [image, setimage] = useState("Me.jpeg");
     const [spinning, setspinning] = useState(false);
     const cubesize = useMotionValue(1);
@@ -30,6 +43,7 @@ export default function Spinbox({ hovered }) {
     });
 
     useEffect(() => {
+        //spin cube
         if (!first.current) {
             cuberot.current = cuberot.current + 2 * Math.PI;
             cuberotmotion.set(cuberot.current);
@@ -37,17 +51,20 @@ export default function Spinbox({ hovered }) {
             first.current = false;
         }
 
-        switch (hovered) {
-            case "electrical":
-                setimage("/electric.png");
-                break;
-            case "ND":
-                setimage("/Dome.avif");
-                break;
-            case "none":
-                setimage("/Me.jpeg");
-                break;
-        }
+        //change image after delay
+        setTimeout(() => {
+            switch (hovered) {
+                case "electrical":
+                    setimage("/electric.png");
+                    break;
+                case "ND":
+                    setimage("/Dome.avif");
+                    break;
+                case "none":
+                    setimage("/Me.jpeg");
+                    break;
+            }
+        }, 100);
 
         console.log(hovered);
     }, [hovered]);
@@ -55,6 +72,8 @@ export default function Spinbox({ hovered }) {
     useEffect(() => {
         window.addEventListener("pointermove", (e) => {
             setmouse({ x: e.x, y: e.y });
+            mouseposmotx.set(e.x);
+            mouseposmoty.set(e.y);
         });
 
         window.addEventListener("resize", () => {
@@ -82,9 +101,9 @@ export default function Spinbox({ hovered }) {
                     ref={cuberef}
                     position={[pos.x, pos.y, pos.z]}
                     rotation={[
-                        0.1 + 0.1 * (mouse.y / screensize.y - 0.05),
+                        0.1 + 0.1 * (smoothmousey.get() / screensize.y - 0.05),
                         -0.3 +
-                            0.1 * (mouse.x / screensize.x - 0.05) +
+                            0.1 * (smoothmousex.get() / screensize.x - 0.05) +
                             smoothcube.get(),
                         0,
                     ]}
