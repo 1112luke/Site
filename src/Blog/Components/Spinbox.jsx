@@ -5,32 +5,54 @@ import { CameraControls, Html, OrbitControls } from "@react-three/drei";
 import { Camera } from "three";
 import { useMotionValue, useSpring } from "framer-motion";
 
-export default function Spinbox() {
+export default function Spinbox({ hovered }) {
+    //for cube spin animation
+    var cuberotmotion = useMotionValue(0);
+    var smoothcube = useSpring(cuberotmotion, { stiffness: 150, damping: 18 });
+    var cuberot = useRef(0); //keep track of total cube rotation
+
+    //cube hove position
     var pos = useHover();
 
     var cuberef = useRef();
 
-    const [mounted, setmounted] = useState(false);
+    var first = useRef(true);
+
+    const [image, setimage] = useState("Me.jpeg");
+    const [spinning, setspinning] = useState(false);
     const cubesize = useMotionValue(1);
     const smoothsize = useSpring(cubesize, { stiffness: 200, damping: 18 });
-
-    var [mouse, setmouse] = useState({ x: 0, y: 0 });
+    //const [cuberot, setcuberot] = useState({ x: 0, y: 0, z: 0 });
+    var [mouse, setmouse] = useState({ x: 0, y: 0, z: 0 });
     var [screensize, setscreensize] = useState({
         x: window.innerWidth,
         y: window.innerHeight,
     });
 
-    const [xrot, setxrot] = useState(0);
+    useEffect(() => {
+        if (!first.current) {
+            cuberot.current = cuberot.current + 2 * Math.PI;
+            cuberotmotion.set(cuberot.current);
+        } else {
+            first.current = false;
+        }
 
-    var rotvel = 0;
+        switch (hovered) {
+            case "electrical":
+                setimage("/electric.png");
+                break;
+            case "ND":
+                setimage("/Dome.avif");
+                break;
+            case "none":
+                setimage("/Me.jpeg");
+                break;
+        }
+
+        console.log(hovered);
+    }, [hovered]);
 
     useEffect(() => {
-        setmounted(true);
-
-        var interval = setInterval(() => {
-            setxrot((current) => current + rotvel);
-        }, 1000 / 60);
-
         window.addEventListener("pointermove", (e) => {
             setmouse({ x: e.x, y: e.y });
         });
@@ -41,7 +63,6 @@ export default function Spinbox() {
 
         return () => {
             clearInterval(interval);
-            setmounted(false);
         };
     }, []);
     /*
@@ -53,7 +74,6 @@ export default function Spinbox() {
     return (
         <>
             <Canvas
-                ref={cuberef}
                 style={{
                     height: "100%",
                     width: "100%",
@@ -63,10 +83,13 @@ export default function Spinbox() {
                 <ambientLight />
                 <pointLight position={[10, 10, 10]} />
                 <group
+                    ref={cuberef}
                     position={[pos.x, pos.y, pos.z]}
                     rotation={[
                         0.1 + 0.1 * (mouse.y / screensize.y - 0.05),
-                        -0.3 + 0.1 * (mouse.x / screensize.x - 0.05),
+                        -0.3 +
+                            0.1 * (mouse.x / screensize.x - 0.05) +
+                            smoothcube.get(),
                         0,
                     ]}
                     scale={[
@@ -86,26 +109,18 @@ export default function Spinbox() {
                             height: "200px",
                             zIndex: "5",
                         }}
-                        position={[0, 0, 1.51]}
+                        position={[0, 0, 1.52]}
                         transform
                         occlude
                     >
-                        <img
-                            onMouseDown={() => {
-                                console.log("down");
-                                cubesize.set(0.8);
-                            }}
-                            onMouseUp={() => {
-                                cubesize.set(1);
-                            }}
-                            onMouseLeave={() => {
-                                cubesize.set(1);
-                            }}
-                            width="200px"
-                            draggable={false}
-                            src="/Me.jpeg"
-                            style={{ aspectRatio: 1 / 1 }}
-                        ></img>
+                        {!spinning && (
+                            <img
+                                width="200px"
+                                draggable={false}
+                                src={image}
+                                style={{ aspectRatio: 1 / 1 }}
+                            ></img>
+                        )}
                     </Html>
                 </group>
             </Canvas>

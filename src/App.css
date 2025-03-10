@@ -32,6 +32,11 @@ h1{
   font-size:40px
 }
 
+.hovertext{
+  color:var(--yellow);
+  cursor:pointer;
+}
+
 .widthwrapper{
   max-width:1024px;
   padding:20px;

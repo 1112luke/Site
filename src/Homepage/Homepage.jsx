@@ -6,8 +6,11 @@ import Header from "../Header/Header";
 import { OrbitControls } from "@react-three/drei";
 import Footer from "../Footer/Footer";
 import Blog from "../Blog/Blog";
+import { useEffect, useState } from "react";
 
 export default function Homepege() {
+    const [hovered, sethovered] = useState("none");
+
     return (
         <>
             <Header></Header>
@@ -46,9 +49,32 @@ export default function Homepege() {
                         boxSizing: "border-box",
                     }}
                 >
-                    I'm an Electrical Engineering major at the University of
-                    Notre Dame. I am passionate about code, electronics,
-                    baseball, and guitar. Scroll to see some of my projects.
+                    I'm an{" "}
+                    <span
+                        className="hovertext"
+                        onMouseOver={() => {
+                            sethovered("electrical");
+                        }}
+                        onMouseLeave={() => {
+                            sethovered("none");
+                        }}
+                    >
+                        Electrical Engineering
+                    </span>{" "}
+                    major at the{" "}
+                    <span
+                        className="hovertext"
+                        onMouseOver={() => {
+                            sethovered("ND");
+                        }}
+                        onMouseLeave={() => {
+                            sethovered("none");
+                        }}
+                    >
+                        University of Notre Dame.
+                    </span>{" "}
+                    I am passionate about code, electronics, baseball, and
+                    guitar. Scroll to see some of my projects.
                 </div>
             </div>
             <div
@@ -58,7 +84,7 @@ export default function Homepege() {
                     float: "left",
                 }}
             >
-                <Spinbox></Spinbox>
+                <Spinbox hovered={hovered}></Spinbox>
             </div>
             <div style={{ width: "100%", height: "80vh" }}></div>
             <Footer></Footer>
