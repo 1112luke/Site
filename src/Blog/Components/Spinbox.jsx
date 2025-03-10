@@ -60,10 +60,6 @@ export default function Spinbox({ hovered }) {
         window.addEventListener("resize", () => {
             setscreensize({ x: window.innerWidth, y: window.innerHeight });
         });
-
-        return () => {
-            clearInterval(interval);
-        };
     }, []);
     /*
     useEffect(() => {
