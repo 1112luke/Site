@@ -24,7 +24,7 @@ export default function Post() {
         <>
             <Header></Header>
             {currpost != 0 && (
-                <>
+                <article>
                     <h1>{currpost.title}</h1>
                     <div
                         style={{
@@ -40,7 +40,7 @@ export default function Post() {
                         style={{ border: "1px solid #FFC600", width: "70%" }}
                     ></hr>
                     <div className="widthwrapper">{currpost.component}</div>
-                </>
+                </article>
             )}
         </>
     );

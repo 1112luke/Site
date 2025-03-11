@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { TorusKnotGeometry } from "three";
 
 export default function Cube({ x, y, z, rot }) {
     var cuberef = useRef();

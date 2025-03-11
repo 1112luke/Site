@@ -1,5 +1,6 @@
 import Post2 from "./Post2/Post2";
-import Post1 from "./Post1/testpost";
+import Post1 from "./Post1/Post1";
+import Post7 from "./Post7/Post7";
 import { LoremIpsum } from "lorem-ipsum";
 
 const lorem = new LoremIpsum({
@@ -55,6 +56,13 @@ const posts = [
         description: lorem.generateSentences(3),
         date: "Feb 26, 2025",
         component: <Post2></Post2>,
+    },
+    {
+        id: "thinking-in-code",
+        title: "Thinking in Code",
+        description: lorem.generateSentences(3),
+        date: "Feb 26, 2025",
+        component: <Post7></Post7>,
     },
 ];
 

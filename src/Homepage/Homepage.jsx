@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import Footer from "../Footer/Footer";
 import Blog from "../Blog/Blog";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Homepege() {
     const [hovered, sethovered] = useState("none");
@@ -50,7 +51,8 @@ export default function Homepege() {
                     }}
                 >
                     I'm an{" "}
-                    <span
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
                         className="hovertext"
                         onMouseOver={() => {
                             sethovered("electrical");
@@ -60,9 +62,10 @@ export default function Homepege() {
                         }}
                     >
                         Electrical Engineering
-                    </span>{" "}
+                    </motion.div>{" "}
                     major at the{" "}
-                    <span
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
                         className="hovertext"
                         onMouseOver={() => {
                             sethovered("ND");
@@ -71,10 +74,23 @@ export default function Homepege() {
                             sethovered("none");
                         }}
                     >
-                        University of Notre Dame.
-                    </span>{" "}
-                    I am passionate about code, electronics, baseball, and
-                    guitar. Scroll to see some of my projects.
+                        University of Notre Dame
+                    </motion.div>
+                    {". "}I am passionate about code,{" "}
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        className="hovertext"
+                        onMouseOver={() => {
+                            sethovered("electronics");
+                        }}
+                        onMouseLeave={() => {
+                            sethovered("none");
+                        }}
+                    >
+                        electronics
+                    </motion.div>
+                    {", "}
+                    baseball, and guitar. Scroll to see some of my projects.
                 </div>
             </div>
             <div

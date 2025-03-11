@@ -16,6 +16,11 @@ li{
     font-weight: 500;
 }
 
+article{
+    margin:0px;
+    padding:0px
+}
+
 a{
     color:#FFC600;
 }

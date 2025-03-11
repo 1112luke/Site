@@ -55,10 +55,13 @@ export default function Spinbox({ hovered }) {
         setTimeout(() => {
             switch (hovered) {
                 case "electrical":
-                    setimage("/electric.png");
+                    setimage("/electric.jpeg");
                     break;
                 case "ND":
                     setimage("/Dome.avif");
+                    break;
+                case "electronics":
+                    setimage("/electronics.png");
                     break;
                 case "none":
                     setimage("/Me.jpeg");
