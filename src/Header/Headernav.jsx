@@ -4,7 +4,7 @@ import Navobject from "./Navobject";
 export default function Headernav() {
     const nav = [
         { title: "About", link: "/about" },
-        { title: "Blog", link: "/blog" },
+        { title: "All Posts", link: "/all-posts" },
         { title: "Projects", link: "/projects" },
     ];
 

@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import "./Card.css";
+import { RxCross2 } from "react-icons/rx";
 
-export default function Card({ title, date, description, id, index }) {
+export default function Card({ title, date, description, id, tags, index }) {
     return (
         <>
             <Link to={`/blog/${id}`}>
@@ -19,6 +20,32 @@ export default function Card({ title, date, description, id, index }) {
                     <h2>{title}</h2>
                     <h4>{date}</h4>
                     <p>{description}</p>
+                    <div id="tagbox">
+                        {tags.map((tag, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    style={{
+                                        backgroundColor: "rgba(255,198,0, 40%)",
+                                        width: "15%",
+                                        opacity: "100%",
+                                        flex: 1,
+                                        textAlign: "left",
+                                        paddingBottom: "2px",
+                                        paddingLeft: "7px",
+                                        paddingRight: "7px",
+                                        display: "inline",
+                                        margin: "10px",
+                                        borderRadius: "40px",
+                                        border: "2px solid var(--yellow)",
+                                        color: "var(--yellow)",
+                                    }}
+                                >
+                                    {`#${tag}`}
+                                </div>
+                            );
+                        })}
+                    </div>
                 </motion.div>
             </Link>
         </>

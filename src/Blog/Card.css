@@ -19,6 +19,19 @@
     font-size:18px;
     background-color: var(--darkblue);
     box-sizing: border-box;
+    position:relative;
+    overflow:hidden;
+}
+
+#tagbox{
+    position:absolute;
+    height:14%;
+    width:50%;
+    bottom:0px;
+    right:0px;
+    float:right;
+    text-align: right;
+    margin-right:40px;
 }
 
 p{
