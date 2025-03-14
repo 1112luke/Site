@@ -9,7 +9,7 @@ import Blog from "../Blog/Blog";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Sortedposts from "../Blog/Sortedposts";
-import "../app.css";
+import "../App.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbArrowBearLeft } from "react-icons/tb";
 
