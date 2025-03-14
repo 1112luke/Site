@@ -4,6 +4,7 @@ import posts from "./Posts/Posts";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import "./Post.css";
+import Footer from "../Footer/Footer";
 
 export default function Post() {
     //get params from route
@@ -42,6 +43,7 @@ export default function Post() {
                     <div className="widthwrapper">{currpost.component}</div>
                 </article>
             )}
+            <Footer></Footer>
         </>
     );
 }

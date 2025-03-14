@@ -129,17 +129,17 @@ export default function Homepege() {
                 <Spinbox hovered={hovered}></Spinbox>
             </div>
             <div style={{ width: "100%", height: "80vh" }}></div>
-            <p
+            <div
                 style={{
                     margin: "auto",
                     width: "100%",
                     textAlign: "center",
+                    fontSize: "1.5rem",
                 }}
             >
                 <div>Recent</div>
-
                 <IoIosArrowDown></IoIosArrowDown>
-            </p>
+            </div>
             <hr></hr>
             <div className="widthwrapper">
                 <Sortedposts></Sortedposts>

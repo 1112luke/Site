@@ -72,23 +72,25 @@ export default function Spinbox({ hovered }) {
         console.log(hovered);
     }, [hovered]);
 
+    function handlePointerMove(e) {
+        setmouse({ x: e.x, y: e.y });
+        mouseposmotx.set(e.x);
+        mouseposmoty.set(e.y);
+    }
+
+    function handleResize(e) {
+        setscreensize({ x: window.innerWidth, y: window.innerHeight });
+    }
+
     useEffect(() => {
-        window.addEventListener("pointermove", (e) => {
-            setmouse({ x: e.x, y: e.y });
-            mouseposmotx.set(e.x);
-            mouseposmoty.set(e.y);
-        });
+        window.addEventListener("pointermove", handlePointerMove);
 
-        window.addEventListener("resize", () => {
-            setscreensize({ x: window.innerWidth, y: window.innerHeight });
-        });
+        window.addEventListener("resize", handleResize);
 
-        /*
         return () => {
             window.removeEventListener("pointermove", handlePointerMove);
             window.removeEventListener("resize", handleResize);
         };
-        */
     }, []);
     /*
     useEffect(() => {
