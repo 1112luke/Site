@@ -4,6 +4,7 @@ import Card from "./Card";
 import posts from "./Posts/Posts";
 import ThreeBackground from "./Components/Background/Threebackground";
 import Footer from "../Footer/Footer";
+import Sortedposts from "./Sortedposts";
 
 export default function Blog() {
     return (
@@ -12,20 +13,7 @@ export default function Blog() {
             <ThreeBackground></ThreeBackground>
             <div className="widthwrapper">
                 <h1>All Posts</h1>
-                {posts.map((post, index) => {
-                    return (
-                        <div key={post.id}>
-                            <Card
-                                title={post.title}
-                                id={post.id}
-                                date={post.date}
-                                description={post.description}
-                                index={index}
-                            ></Card>
-                            <br></br>
-                        </div>
-                    );
-                })}
+                <Sortedposts></Sortedposts>
             </div>
             <Footer></Footer>
         </>

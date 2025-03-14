@@ -1,5 +1,5 @@
 import "./header.css";
-import { Link } from "react-router";
+import Navobject from "./Navobject";
 
 export default function Headernav() {
     const nav = [
@@ -12,13 +12,7 @@ export default function Headernav() {
         <>
             <div id="headernav">
                 {nav.map((obj, index) => {
-                    return (
-                        <div className="navobject" key={index}>
-                            <Link to={obj.link}>
-                                <p>{obj.title}</p>
-                            </Link>
-                        </div>
-                    );
+                    return <Navobject obj={obj} key={index}></Navobject>;
                 })}
             </div>
         </>

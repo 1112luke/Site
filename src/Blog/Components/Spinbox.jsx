@@ -82,6 +82,13 @@ export default function Spinbox({ hovered }) {
         window.addEventListener("resize", () => {
             setscreensize({ x: window.innerWidth, y: window.innerHeight });
         });
+
+        /*
+        return () => {
+            window.removeEventListener("pointermove", handlePointerMove);
+            window.removeEventListener("resize", handleResize);
+        };
+        */
     }, []);
     /*
     useEffect(() => {

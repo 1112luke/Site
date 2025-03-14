@@ -14,3 +14,24 @@
     justify-content: center;
     align-items: center;
 }
+
+.width{
+    margin:0;
+    padding: 0;
+    max-width:1024px;
+    height:100%;
+    display:flex;
+}
+
+#footerleft{
+    flex:1;
+}
+
+#footercenter{
+    flex:1;
+    color:var(--darkblue)
+}
+
+#footerright{
+    flex:1;
+}

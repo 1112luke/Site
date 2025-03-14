@@ -8,6 +8,10 @@ import Footer from "../Footer/Footer";
 import Blog from "../Blog/Blog";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Sortedposts from "../Blog/Sortedposts";
+import "../app.css";
+import { IoIosArrowDown } from "react-icons/io";
+import { TbArrowBearLeft } from "react-icons/tb";
 
 export default function Homepege() {
     const [hovered, sethovered] = useState("none");
@@ -26,6 +30,7 @@ export default function Homepege() {
                     margin: "auto",
                     whiteSpace: "nowrap",
                     transform: "translate(-50%,-50% )",
+                    zIndex: 1,
                 }}
             >
                 Hi! I'm Luke 👋
@@ -36,6 +41,7 @@ export default function Homepege() {
                     width: "50%",
                     height: "80vh",
                     float: "left",
+                    zIndex: 100,
                 }}
             >
                 <div
@@ -61,6 +67,26 @@ export default function Homepege() {
                             sethovered("none");
                         }}
                     >
+                        <div
+                            style={{
+                                position: "absolute",
+                                top: "-50px",
+                                transform: "rotate(-20deg)",
+                                fontSize: "25px",
+                                color: "white",
+                                fontWeight: 200,
+                            }}
+                        >
+                            Hover Me
+                            <TbArrowBearLeft
+                                style={{
+                                    position: "absolute",
+                                    left: "50px",
+                                    top: "30px",
+                                    transform: "scaleX(-1) rotate(205deg)",
+                                }}
+                            />
+                        </div>
                         Electrical Engineering
                     </motion.div>{" "}
                     major at the{" "}
@@ -103,6 +129,22 @@ export default function Homepege() {
                 <Spinbox hovered={hovered}></Spinbox>
             </div>
             <div style={{ width: "100%", height: "80vh" }}></div>
+            <p
+                style={{
+                    margin: "auto",
+                    width: "100%",
+                    textAlign: "center",
+                }}
+            >
+                <div>Recent</div>
+
+                <IoIosArrowDown></IoIosArrowDown>
+            </p>
+            <hr></hr>
+            <div className="widthwrapper">
+                <Sortedposts></Sortedposts>
+            </div>
+
             <Footer></Footer>
         </>
     );

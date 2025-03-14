@@ -42,4 +42,14 @@ flex:1;
     margin:1vw;
     font-size: 25px;
     color:white;
+    position:relative;
+}
+
+.punderline{
+    position:absolute;
+    top:65px;
+    border-radius: 0px;
+    left:0px;
+    height: 2px;
+    background-color: var(--yellow);
 }
