@@ -24,6 +24,10 @@
     display:flex;
 }
 
+#totop:hover{
+    cursor:pointer;
+}
+
 #footerleft{
     flex:1;
 }
