@@ -33,7 +33,7 @@
 }
 
 #footercenter{
-    flex:1;
+    flex:0.4;
     color:var(--darkblue);
     position:"relative";
 }

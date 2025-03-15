@@ -21,6 +21,13 @@ export default function Post() {
         });
     }, []);
 
+    function dateToWords(date) {
+        var year = date.getFullYear();
+        var month = date.toLocaleString("default", { month: "long" });
+        var day = date.getDate();
+        return `${month} ${day + 1}, ${year}`;
+    }
+
     return (
         <>
             <Header></Header>
@@ -35,7 +42,7 @@ export default function Post() {
                             fontStyle: "italic",
                         }}
                     >
-                        Published {currpost.date}
+                        Published {dateToWords(currpost.date)}
                     </div>
                     <hr
                         style={{ border: "1px solid #FFC600", width: "70%" }}

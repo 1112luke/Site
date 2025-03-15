@@ -6,7 +6,7 @@ import { RxCross2 } from "react-icons/rx";
 export default function Card({ title, date, description, id, tags, index }) {
     return (
         <>
-            <Link to={`/blog/${id}`}>
+            <Link to={`/${id}`}>
                 <motion.div
                     id="container"
                     whileHover={{

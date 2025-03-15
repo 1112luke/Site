@@ -6,14 +6,14 @@ import ThreeBackground from "./Components/Background/Threebackground";
 import Footer from "../Footer/Footer";
 import Sortedposts from "./Sortedposts";
 
-export default function Blog() {
+export default function Blog({ sort }) {
     return (
         <>
             <Header></Header>
             <ThreeBackground></ThreeBackground>
             <div className="widthwrapper">
                 <h1>All Posts</h1>
-                <Sortedposts></Sortedposts>
+                <Sortedposts sort={sort}></Sortedposts>
             </div>
             <Footer></Footer>
         </>
