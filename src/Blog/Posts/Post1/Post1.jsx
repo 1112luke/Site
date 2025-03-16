@@ -173,14 +173,110 @@ CMD ["python", "./Drone.py"]`}</SyntaxHighlighter>
                 </p>
                 <li>Containers</li>
             </ol>
-            <p></p>
-            <p>Using Docker, the workflow is the following:</p>
-            <ol>
-                <li>Using Docker build, build the code with the following:</li>
-                <SyntaxHighlighter language="bash" id="syntax">
-                    {`$ sudo docker build -t 1112luke/drone . \n$ sudo docker push 1112luke/drone`}
-                </SyntaxHighlighter>
-            </ol>
+            <p>
+                A docker contianer can be though of as a running instance of
+                your program that has been spawned using the docker image. Using
+                the image, many containers can be spawned and deployed across
+                many machines. A docker container can be run using the
+                following:
+            </p>
+            <SyntaxHighlighter
+                language="bash"
+                id="syntax"
+            >{`$ sudo docker run -it image-name`}</SyntaxHighlighter>
+            <p>
+                where <i>image-name</i> is the name of the image you previously
+                built.
+            </p>
+            <p>
+                {" "}
+                The -it specifies that the container will run with an
+                interactive terminal, which may be useful for certain
+                applications. Below are some common flags which I find helpful:
+            </p>
+            <ul>
+                <li>
+                    -it
+                    <p>run in interactive terminal mode</p>
+                </li>
+                <li>
+                    -p <i>internal</i>:<i>external</i>
+                    <p>
+                        forward a port from within the docker container to the
+                        host machine's network
+                    </p>
+                </li>
+                <li>
+                    -restart always
+                    <p>
+                        run the docker container if no instance is already
+                        running
+                    </p>
+                </li>
+                <li>
+                    --device <i>device</i>
+                    <p>
+                        forward any device from the host machine into the docker
+                        container
+                    </p>
+                </li>
+            </ul>
+            <h3>My Workflow</h3>
+            <p>
+                {" "}
+                Once I have created a Dockerfile, any change I make to the code
+                is accomplished with the following:
+            </p>
+            <SyntaxHighlighter language="bash" id="syntax">
+                {`$ sudo docker build -t 1112luke/drone . \n$ sudo docker push 1112luke/drone`}
+            </SyntaxHighlighter>
+            <p>
+                Then, on the raspberry pi, I can simply pull the image and run
+                with:
+            </p>
+            <SyntaxHighlighter
+                language="bash"
+                id="syntax"
+            >{`$ sudo docker pull 1112luke/drone \n$ sudo docker run -it --device /dev/ttyUSB0 -p 14551:14551 --restart always 1112luke/drone`}</SyntaxHighlighter>
+            <p>
+                The entire process, from saving the code on my laptop to running
+                it on the raspberry pi takes around 5 seconds.
+            </p>
+            <h3>What's Next?</h3>
+            <p>
+                Learning and using Docker has truly been a joy. In my
+                experience, I find that any new tool I consistently use falls
+                into one of three categories:
+                <ol>
+                    <li>
+                        Tools that are necessary but I don't enjoy using.{" "}
+                        <p>-cron, stripe, windows 11, etc.</p>
+                    </li>
+                    <li>
+                        Tools that are unnecessary but I enjoy using.
+                        <p>
+                            -way too many VSCode plugins, color customizations,
+                            most other customizations, etc.
+                        </p>
+                    </li>
+                    <li>
+                        Tools that are necessary and I enjoy using.
+                        <p>
+                            -<strong>Docker</strong>, React, Unix commands,
+                            Framer motion, etc.
+                        </p>
+                    </li>
+                    <p>
+                        As you can see, Docker falls right into the third
+                        category as a tool I feel is both necessary and
+                        enjoyable to use. Tools like Docker make me <i>want</i>{" "}
+                        to have a project where I need it. I hope I will be able
+                        to learn more about docker, specifically about
+                        Docker-Compose and Kubernetes, as I tackle more complex
+                        projects.
+                    </p>
+                </ol>
+            </p>
         </>
     );
 }
