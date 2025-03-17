@@ -36,7 +36,7 @@ export default function Sortedposts({ sort }) {
         //sort posts by date
         sethereposts(
             outposts.sort((p1, p2) => {
-                return p1.date.getTime() - p2.date.getTime();
+                return p2.date.getTime() - p1.date.getTime();
             })
         );
     }, [sortby]);
