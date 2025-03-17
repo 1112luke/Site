@@ -29,6 +29,7 @@ flex:0
 
 #headerright{
 flex:1;
+max-width:500px;
 }
 
 #headernav{
@@ -39,15 +40,18 @@ flex:1;
     padding:20px;
 }
 .navobject{
-    margin:1vw;
     font-size: 25px;
     color:white;
     position:relative;
+    flex:1;
+    display:flex;
+    justify-content: right;
+    align-items: center;
 }
 
 .punderline{
-    position:absolute;
-    top:65px;
+    position:relative;
+    top:-31px;
     border-radius: 0px;
     left:0px;
     height: 2px;

@@ -12,6 +12,7 @@ import Sortedposts from "../Blog/Sortedposts";
 import "../App.css";
 import { IoIosArrowDown } from "react-icons/io";
 import { TbArrowBearLeft } from "react-icons/tb";
+import Wip from "../Blog/Components/Wip";
 
 export default function Homepege() {
     const [hovered, sethovered] = useState("none");

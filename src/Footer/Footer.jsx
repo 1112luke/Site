@@ -47,6 +47,7 @@ export default function Footer() {
                                     justifyContent: "center",
                                     alignItems: "center",
                                     flexDirection: "column",
+                                    flex: 1,
                                 }}
                                 onClick={() => {
                                     window.scrollTo({
@@ -93,10 +94,11 @@ export default function Footer() {
                                     &copy; 2025 Luke Scholler
                                 </div>
                             </Link>
+                            <div style={{ flex: 1 }}></div>
                         </div>
                     </div>
                     <div id="footerright" className="centerbox">
-                        <Headernav></Headernav>
+                        <Headernav color={"var(--darkblue)"}></Headernav>
                     </div>
                 </div>
             </div>
