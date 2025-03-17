@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import Homepege from "./Homepage/Homepage";
 import Blog from "./Blog/Blog";
 import Post from "./Blog/Post";
-import posts from "./Blog/Posts/Posts";
+import Pidemo from "./Codes/PID/Pidemo";
 
 function App() {
     return (
@@ -19,6 +19,10 @@ function App() {
                         element={<Blog sort={"project"}></Blog>}
                     ></Route>
                     <Route path="/:id" element={<Post></Post>}></Route>
+                    <Route
+                        path="/codes/pidemo"
+                        element={<Pidemo></Pidemo>}
+                    ></Route>
                 </Routes>
             </BrowserRouter>
         </>

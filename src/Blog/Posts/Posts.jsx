@@ -1,6 +1,7 @@
 import Post2 from "./Post2/Post2";
 import Post1 from "./Post1/Post1";
 import Post7 from "./Post7/Post7";
+import Post8 from "./Post8/Post8";
 import { LoremIpsum } from "lorem-ipsum";
 
 const lorem = new LoremIpsum({
@@ -77,6 +78,15 @@ const posts = [
         date: new Date("2025-02-26"),
         tags: ["blog", "project"],
         component: <Post7></Post7>,
+    },
+    {
+        id: "pid-control",
+        public: true,
+        title: "An exploration of PID control",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-26"),
+        tags: ["blog", "project"],
+        component: <Post8></Post8>,
     },
 ];
 

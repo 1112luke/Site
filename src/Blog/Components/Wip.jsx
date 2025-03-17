@@ -19,6 +19,7 @@ export default function Wip() {
                     boxSizing: "border-box",
                     transform: "rotate(20deg)",
                     fontSize: "20px",
+                    zIndex: "100",
                 }}
             >
                 This Website is a Work in Progress!!
