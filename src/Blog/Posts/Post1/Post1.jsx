@@ -1,5 +1,4 @@
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
-import Latex from "react-latex";
 import {
     atomOneDark,
     gradientDark,
