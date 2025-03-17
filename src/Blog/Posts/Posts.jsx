@@ -84,7 +84,7 @@ const posts = [
         public: true,
         title: "An exploration of PID control",
         description: lorem.generateSentences(3),
-        date: new Date("2025-02-26"),
+        date: new Date("2025-03-17"),
         tags: ["blog", "project"],
         component: <Post8></Post8>,
     },
