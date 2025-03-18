@@ -3,64 +3,44 @@ import Card from "./Card";
 import { useEffect, useState } from "react";
 
 export default function Sortedposts({ sort }) {
-    var [sortby, setsortby] = useState("all");
-    var [hereposts, sethereposts] = useState(posts);
+    const [sortby, setsortby] = useState("all");
+    const [hereposts, sethereposts] = useState(posts);
 
     useEffect(() => {
-        console.log(sort);
-    }, []);
-    //sortby should be either all, projects, or blog
-    useEffect(() => {
-        if (sort) {
-            setsortby(sort);
-        } else {
-            setsortby("all");
-        }
+        setsortby(sort || "all");
     }, [sort]);
 
     useEffect(() => {
-        var outposts = [];
-        var postcopy = posts;
-        //filter for tag
-        console.log(sortby);
-        if (sortby != "all") {
-            postcopy.forEach((post) => {
-                if (isIn(sortby, post.tags)) {
-                    outposts.push(post);
-                }
-            });
+        let outposts = [];
+
+        if (sortby !== "all") {
+            outposts = posts.filter((post) => isIn(sortby, post.tags));
         } else {
-            outposts = postcopy;
+            outposts = [...posts]; // Ensure a new array reference
         }
 
-        //sort posts by date
-        sethereposts(
-            outposts.sort((p1, p2) => {
-                return p2.date.getTime() - p1.date.getTime();
-            })
-        );
-    }, [sortby]);
+        outposts = outposts
+            .slice()
+            .sort((p1, p2) => p2.date.getTime() - p1.date.getTime());
+
+        sethereposts(outposts); // Ensure React recognizes the new state
+    }, [sortby, posts]); // Add `posts` as a dependency in case posts change
 
     function dateToWords(date) {
-        var year = date.getFullYear();
-        var month = date.toLocaleString("default", { month: "long" });
-        var day = date.getDate();
+        const year = date.getFullYear();
+        const month = date.toLocaleString("default", { month: "long" });
+        const day = date.getDate();
         return `${month} ${day + 1}, ${year}`;
     }
 
     function isIn(str, arr) {
-        for (var i = 0; i < arr.length; i++) {
-            if (str == arr[i]) {
-                return true;
-            }
-        }
-        return false;
+        return arr.includes(str);
     }
 
     return (
         <>
-            {hereposts.map((post, index) => {
-                return post.public ? (
+            {hereposts.map((post, index) =>
+                post.public ? (
                     <div key={post.id}>
                         <Card
                             title={post.title}
@@ -69,13 +49,11 @@ export default function Sortedposts({ sort }) {
                             description={post.description}
                             tags={post.tags}
                             index={index}
-                        ></Card>
-                        <br></br>
+                        />
+                        <br />
                     </div>
-                ) : (
-                    <></>
-                );
-            })}
+                ) : null
+            )}
         </>
     );
 }

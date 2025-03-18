@@ -68,8 +68,6 @@ export default function Spinbox({ hovered }) {
                     break;
             }
         }, 100);
-
-        console.log(hovered);
     }, [hovered]);
 
     function handlePointerMove(e) {
