@@ -27,7 +27,7 @@ const posts = [
     },
     {
         id: "Post-2",
-        public: true,
+        public: false,
         title: "The Useless Box: Do you Remember These?",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-23"),
@@ -36,7 +36,7 @@ const posts = [
     },
     {
         id: "Post-3",
-        public: true,
+        public: false,
         title: "How I created a Linkedin AI bot that talked to my friend for three hours",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-24"),
@@ -45,7 +45,7 @@ const posts = [
     },
     {
         id: "Post-4",
-        public: true,
+        public: false,
         title: "Cobalt Blue EVERYTHING",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-26"),
@@ -54,7 +54,7 @@ const posts = [
     },
     {
         id: "Post-5",
-        public: true,
+        public: false,
         title: "The Story of This Website",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-26"),
@@ -63,7 +63,7 @@ const posts = [
     },
     {
         id: "Post-6",
-        public: true,
+        public: false,
         title: "Sorting algorithms, rust, and web assembly",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-27"),
@@ -72,7 +72,7 @@ const posts = [
     },
     {
         id: "thinking-in-code",
-        public: true,
+        public: false,
         title: "Thinking in Code",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-26"),

@@ -103,7 +103,7 @@ export default function Homepege() {
                     >
                         University of Notre Dame
                     </motion.div>
-                    {". "}I am passionate about code,{" "}
+                    {". "}I am passionate about{" "}
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         className="hovertext"
@@ -116,8 +116,8 @@ export default function Homepege() {
                     >
                         electronics
                     </motion.div>
-                    {", "}
-                    baseball, and guitar. Scroll to see some of my projects.
+                    , code, baseball, and guitar. Scroll to see some of my
+                    projects.
                 </div>
             </div>
             <div

@@ -9,9 +9,9 @@ export default function Pidemo() {
 
     const [line, setline] = useState([]);
 
-    const [kp, setkp] = useState(0.01);
+    const [kp, setkp] = useState(0.012);
     const [ki, setki] = useState(0.000004);
-    const [kd, setkd] = useState(6);
+    const [kd, setkd] = useState(1.5);
 
     const controllerRef = useRef(null);
 
@@ -154,8 +154,6 @@ export default function Pidemo() {
 
             //set line
             setline(linearr);
-
-            console.log(linearr);
         }, 1000 / 60);
 
         return () => {

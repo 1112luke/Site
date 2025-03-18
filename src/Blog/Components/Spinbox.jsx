@@ -58,7 +58,7 @@ export default function Spinbox({ hovered }) {
                     setimage("/electric.jpeg");
                     break;
                 case "ND":
-                    setimage("/Dome.avif");
+                    setimage("/Nd.jpg");
                     break;
                 case "electronics":
                     setimage("/electronics.png");
