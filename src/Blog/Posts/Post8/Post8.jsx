@@ -30,14 +30,14 @@ export default function Post8() {
                 explanations of programmatic implementation as well as good
                 interacive demos.
             </p>
-            <p>
+            <div>
                 I built this article after not finding good resources online
                 with the motivation that it could be "the article I wish I came
                 across when I was learning PID controls." This article contains
                 an interactive demo, mathematical explanation, and an
                 explanation of programmatic implementation.
                 <ul></ul>
-            </p>
+            </div>
             <h3>The Math</h3>
             <p>The outputs P, I, and D are given by:</p>
             <div>

@@ -7,6 +7,8 @@ export default function Pidemo() {
         y: window.innerHeight,
     });
 
+    const [line, setline] = useState([]);
+
     const [kp, setkp] = useState(0.01);
     const [ki, setki] = useState(0.000004);
     const [kd, setkd] = useState(6);
@@ -99,12 +101,26 @@ export default function Pidemo() {
 
     var mousepos = 0;
 
+    class Linepoint {
+        constructor(ypos, xpos, xspeed) {
+            this.ypos = ypos;
+            this.xpos = xpos;
+            this.xspeed = xspeed;
+        }
+
+        move() {
+            this.xpos += this.xspeed;
+        }
+    }
+
     function handlemousemove(e) {
         mousepos = e.clientY;
         setbigy(mousepos);
     }
 
     var controller;
+
+    var linearr = [];
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);
@@ -123,6 +139,23 @@ export default function Pidemo() {
             smallcircle.setacc(value);
             //move small circle
             smallcircle.update();
+
+            //add new linepoint
+            linearr.push(new Linepoint(smallcircle.ypos, 0, 1));
+
+            //delete any linepoints and move them
+            linearr.forEach((line, index) => {
+                line.move();
+
+                if (line.xpos > 475) {
+                    linearr.splice(index, 1);
+                }
+            });
+
+            //set line
+            setline(linearr);
+
+            console.log(linearr);
         }, 1000 / 60);
 
         return () => {
@@ -148,6 +181,7 @@ export default function Pidemo() {
                     backgroundColor: "#1F4662",
                     position: "absolute",
                     overflow: "hidden",
+                    display: "flex",
                 }}
             >
                 <div
@@ -158,9 +192,7 @@ export default function Pidemo() {
                         justifyContent: "center",
                         alignItems: "center",
                         flexDirection: "column",
-                        position: "absolute",
-                        top: "0px",
-                        left: "0px",
+                        flex: 1,
                     }}
                 >
                     <div style={{ transform: "translateY(-40px)" }}>
@@ -206,29 +238,77 @@ export default function Pidemo() {
 
                 <div
                     style={{
-                        width: "12%",
-                        aspectRatio: 1,
-                        backgroundColor: "var(--yellow)",
-                        position: "absolute",
-                        top: bigy,
-                        left: "50%",
-                        borderRadius: "1000px",
-                        transform: "translate(-50%, -50%)",
+                        width: "100%",
+                        height: "100%",
+                        flex: 1,
+                        position: "relative",
                     }}
-                ></div>
+                >
+                    <div
+                        style={{
+                            width: "25%",
+                            aspectRatio: 1,
+                            backgroundColor: "var(--yellow)",
+                            position: "absolute",
+                            top: bigy,
+                            left: "50%",
+                            borderRadius: "1000px",
+                            transform: "translate(-50%, -50%)",
+                        }}
+                    ></div>
 
+                    <div
+                        style={{
+                            width: "10%",
+                            aspectRatio: 1,
+                            backgroundColor: "white",
+                            position: "absolute",
+                            top: smally,
+                            left: "50%",
+                            borderRadius: "1000px",
+                            transform: "translate(-50%, -50%)",
+                        }}
+                    ></div>
+                </div>
                 <div
                     style={{
-                        width: "5%",
-                        aspectRatio: 1,
-                        backgroundColor: "white",
-                        position: "absolute",
-                        top: smally,
-                        left: "50%",
-                        borderRadius: "1000px",
-                        transform: "translate(-50%, -50%)",
+                        width: "100%",
+                        height: "100%",
+                        flex: 2,
+                        position: "relative",
+                        borderLeft: "2px solid var(--darkblue)",
                     }}
-                ></div>
+                >
+                    <div
+                        style={{
+                            width: "100%",
+                            height: "2px",
+                            backgroundColor: "var(--yellow)",
+                            position: "absolute",
+                            top: bigy,
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                        }}
+                    ></div>
+
+                    {line.map((line, index) => {
+                        return (
+                            <div
+                                style={{
+                                    width: "2px",
+                                    height: "2px",
+                                    borderRadius: "5px",
+                                    backgroundColor: "white",
+                                    position: "absolute",
+                                    transform: "translate(-50%, -50%)",
+                                    left: line.xpos,
+                                    top: line.ypos,
+                                }}
+                                key={index}
+                            ></div>
+                        );
+                    })}
+                </div>
             </div>
         </>
     );
