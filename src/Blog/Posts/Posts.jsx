@@ -82,7 +82,7 @@ const posts = [
     {
         id: "pid-control",
         public: true,
-        title: "An exploration of PID control",
+        title: "An Exploration of PID Control",
         description: lorem.generateSentences(3),
         date: new Date("2025-03-17"),
         tags: ["blog", "project"],

@@ -147,7 +147,7 @@ export default function Pidemo() {
             linearr.forEach((line, index) => {
                 line.move();
 
-                if (line.xpos > 475) {
+                if (line.xpos > 500) {
                     linearr.splice(index, 1);
                 }
             });
