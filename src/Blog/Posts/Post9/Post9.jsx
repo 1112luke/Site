@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../post9.css";
+import "./Post9.css";
 
 export default function Post9() {
     const [views, setviews] = useState(0);
