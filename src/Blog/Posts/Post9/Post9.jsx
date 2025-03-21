@@ -119,13 +119,17 @@ export default function Post9() {
                 video editing software would have been fine.
             </p>
             <p>
-                For the vocals, I used <a>FL studio</a> because it was free. I
-                remember screaming the vocals at the top of my lungs in my room
-                -- the parents were probably very confused. As per my research
-                on Kurt Cobain, I recorded many of the vocals multiple times and
-                layerd them on top of eachother for a more full sound. Then, by
-                a combination of reverb, EQ, compression, distortion, and other
-                effects, I attempted to mimic the sound further.
+                For the vocals, I used{" "}
+                <a href="https://www.image-line.com/" target="_blank">
+                    FL studio
+                </a>{" "}
+                because it was free. I remember screaming the vocals at the top
+                of my lungs in my room -- the parents were probably very
+                confused. As per my research on Kurt Cobain, I recorded many of
+                the vocals multiple times and layerd them on top of eachother
+                for a more full sound. Then, by a combination of reverb, EQ,
+                compression, distortion, and other effects, I attempted to mimic
+                the sound further.
             </p>
         </>
     );
