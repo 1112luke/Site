@@ -3,6 +3,7 @@ import Post1 from "./Post1/Post1";
 import Post7 from "./Post7/Post7";
 import Post8 from "./Post8/Post8";
 import { LoremIpsum } from "lorem-ipsum";
+import Post9 from "./Post9/Post9";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -87,6 +88,15 @@ const posts = [
         date: new Date("2025-03-17"),
         tags: ["blog", "project"],
         component: <Post8></Post8>,
+    },
+    {
+        id: "smells-like-calculus",
+        public: true,
+        title: "A Calculus Parody Music Video",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-03-20"),
+        tags: ["blog", "project"],
+        component: <Post9></Post9>,
     },
 ];
 

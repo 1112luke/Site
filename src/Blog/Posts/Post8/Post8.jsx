@@ -160,7 +160,7 @@ export default function Post8() {
             <div>
                 <Latex>
                     {
-                        "$\\Huge u(t) = Kp*e(t) + Ki*\\int{e(t)}\\;dt + Kd * \\frac{de(t)}{dt}$"
+                        "$\\Huge u(t) = Kp\\cdot e(t) + Ki\\cdot\\int{e(t)}\\;dt + Kd \\cdot\\frac{de(t)}{dt}$"
                     }
                 </Latex>
             </div>
