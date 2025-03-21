@@ -4,6 +4,7 @@ import Post7 from "./Post7/Post7";
 import Post8 from "./Post8/Post8";
 import { LoremIpsum } from "lorem-ipsum";
 import Post9 from "./Post9/Post9";
+import Post5 from "./Post5/Post5";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -55,12 +56,12 @@ const posts = [
     },
     {
         id: "Post-5",
-        public: false,
+        public: true,
         title: "The Story of This Website",
         description: lorem.generateSentences(3),
         date: new Date("2025-02-26"),
         tags: ["blog", "project"],
-        component: <Post2></Post2>,
+        component: <Post5></Post5>,
     },
     {
         id: "Post-6",
