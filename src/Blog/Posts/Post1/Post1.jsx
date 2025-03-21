@@ -17,8 +17,8 @@ export default function Post1() {
             <h3>My Experience</h3>
             <p>
                 If you have been around tech for a sufficient amount of time,
-                I'm sure you have heard of Docker. Growing up, anytime I heard
-                the word docker I became instantly scared of the topic and
+                I'm sure you have heard of Docker. In my experience, anytime I
+                heard the word docker I became instantly scared of the topic and
                 shifted my attention to another solution.
             </p>
             <p>
