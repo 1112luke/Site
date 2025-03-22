@@ -57,3 +57,18 @@ max-width:500px;
     height: 2px;
     background-color: var(--yellow);
 }
+
+.wip{
+    width:300px;
+    aspect-ratio: 1;
+    bottom: -80px;
+    left: -30px;
+    font-size:1.2rem;
+    display:flex;
+}
+
+@media (max-width:720px){
+    .wip{
+        display:none;
+    }
+}

@@ -23,6 +23,44 @@ export default function Homepege() {
             <ThreeBackground></ThreeBackground>
             <div
                 style={{
+                    width: "100%",
+                }}
+                className="mobile"
+            >
+                <div style={{ fontSize: "5rem" }}>Hi! I'm Luke 👋</div>
+                <hr></hr>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <div
+                        style={{
+                            fontSize: "2rem",
+                            flex: "1",
+                        }}
+                    >
+                        I'm an Electrical Engineering major at the Unversity of
+                        Notre Dame. I am passionate about electronics, code,
+                        baseball, and guitar. Scroll to see some of my projects.
+                    </div>
+                    <div style={{ flex: "0.7" }}>
+                        <img
+                            src="./Me.jpeg"
+                            width="90%"
+                            style={{
+                                border: "3px solid var(--yellow)",
+                                borderRadius: "50%",
+                                boxShadow: "-5px 5px 0 black",
+                            }}
+                        ></img>
+                    </div>
+                </div>
+            </div>
+            <div
+                style={{
                     height: "20vh",
                     fontSize: "10vh",
                     position: "absolute",
@@ -33,9 +71,11 @@ export default function Homepege() {
                     transform: "translate(-50%,-50% )",
                     zIndex: 1,
                 }}
+                className="wide"
             >
                 Hi! I'm Luke 👋
             </div>
+
             <div
                 style={{
                     top: "50%",
@@ -44,6 +84,7 @@ export default function Homepege() {
                     float: "left",
                     zIndex: 100,
                 }}
+                className="wide"
             >
                 <div
                     style={{
@@ -56,6 +97,7 @@ export default function Homepege() {
                         margin: "auto",
                         boxSizing: "border-box",
                     }}
+                    className="wide"
                 >
                     I'm an{" "}
                     <motion.div
@@ -126,10 +168,14 @@ export default function Homepege() {
                     height: "80vh",
                     float: "left",
                 }}
+                className="wide"
             >
                 <Spinbox hovered={hovered}></Spinbox>
             </div>
-            <div style={{ width: "100%", height: "80vh" }}></div>
+            <div
+                style={{ width: "100%", height: "80vh" }}
+                className="wide"
+            ></div>
             <div
                 style={{
                     margin: "auto",

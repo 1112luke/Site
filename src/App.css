@@ -2,6 +2,7 @@
   --blue: #1F4662;
   --darkblue: #162F43;
   --yellow: #FFC600;
+  width:100%;
 }
 
 ::selection{
@@ -74,4 +75,21 @@ body{
   display:none;
 }
 
+
+/*for conditional rendering*/
+
+
+@media (min-width:720px){
+  
+  .mobile{
+    display:none;
+  }
+}
+
+@media (max-width:720px){
+  
+  .wide{
+    display:none;
+  }
+}
 
