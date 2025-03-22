@@ -6,6 +6,15 @@ import { monoBlue } from "react-syntax-highlighter/dist/esm/styles/hljs";
 export default function Post8() {
     return (
         <>
+            <meta
+                name="description"
+                content="Interactive demo, Mathematical explanation, and Programmatic implemention of PID Controls."
+            ></meta>
+            <meta
+                name="keywords"
+                content="pid, control, demo, demonstration, program, code, math"
+            ></meta>
+            <meta name="author" content="Luke Scholler"></meta>
             <div
                 style={{
                     width: "100%",
