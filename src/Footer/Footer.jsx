@@ -14,7 +14,7 @@ export default function Footer() {
                         <a
                             href={"https://www.linkedin.com/in/lukescholler/"}
                             target="_blank"
-                            style={{ margin: "7px", fontSize: "2.2rem" }}
+                            style={{ margin: "7px", fontSize: "3rem" }}
                         >
                             <GrLinkedin
                                 style={{ color: "var(--darkblue)" }}
@@ -23,7 +23,7 @@ export default function Footer() {
                         <a
                             href={"https://github.com/1112luke"}
                             target="_blank"
-                            style={{ margin: "7px", fontSize: "2.4rem" }}
+                            style={{ margin: "7px", fontSize: "3.3rem" }}
                         >
                             <GrGithub
                                 style={{ color: "var(--darkblue)" }}

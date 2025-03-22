@@ -40,7 +40,6 @@ export default function Post() {
                             margin: "auto",
                             textAlign: "left",
                             fontStyle: "italic",
-                            fontSize: "0.65rem",
                         }}
                     >
                         Published {dateToWords(currpost.date)}

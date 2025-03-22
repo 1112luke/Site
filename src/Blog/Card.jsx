@@ -18,7 +18,7 @@ export default function Card({ title, date, description, id, tags, index }) {
                 >
                     <h2>{title}</h2>
                     <h4>{date}</h4>
-                    <p style={{ fontSize: "1.2rem" }}>{description}</p>
+                    <p style={{ fontSize: "1.9rem" }}>{description}</p>
                     <div id="tagbox">
                         {tags.map((tag, index) => {
                             return (
@@ -38,6 +38,7 @@ export default function Card({ title, date, description, id, tags, index }) {
                                         borderRadius: "40px",
                                         border: "2px solid var(--yellow)",
                                         color: "var(--yellow)",
+                                        fontSize: "1.125rem",
                                     }}
                                 >
                                     {`#${tag}`}

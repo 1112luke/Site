@@ -8,7 +8,7 @@
 }
 
 .container{
-    height:7rem;
+    height:12rem;
     background-color: var(--yellow);
     display:flex;
     justify-content: center;
@@ -37,7 +37,7 @@
     flex:0.4;
     color:var(--darkblue);
     position:"relative";
-    font-size: 0.65rem;
+    font-size: 1rem;
 }
 
 #footerright{

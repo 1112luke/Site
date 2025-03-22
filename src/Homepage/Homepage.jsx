@@ -97,7 +97,7 @@ export default function Homepege() {
                         top: "50%",
                         left: "10%",
                         transform: "translate(-10%, -50%)",
-                        fontSize: "2rem",
+                        fontSize: "2.5rem",
                         margin: "auto",
                         boxSizing: "border-box",
                     }}

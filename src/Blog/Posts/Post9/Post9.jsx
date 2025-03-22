@@ -55,7 +55,12 @@ export default function Post9() {
                     }}
                     id="blink"
                 ></div>
-                <div style={{ marginLeft: "20px", marginRight: "20px" }}>
+                <div
+                    style={{
+                        marginLeft: "20px",
+                        marginRight: "20px",
+                    }}
+                >
                     Views:{" "}
                     <span style={{ color: "var(--yellow)" }}>
                         {Number(views).toLocaleString()}
