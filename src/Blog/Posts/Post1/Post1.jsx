@@ -265,16 +265,15 @@ CMD ["python", "./Drone.py"]`}</SyntaxHighlighter>
                             Framer motion, etc.
                         </p>
                     </li>
-                    <p>
-                        As you can see, Docker falls right into the third
-                        category as a tool I feel is both necessary and
-                        enjoyable to use. Tools like Docker make me <i>want</i>{" "}
-                        to have a project where I need it. I hope I will be able
-                        to learn more about docker, specifically about
-                        Docker-Compose and Kubernetes, as I tackle more complex
-                        projects.
-                    </p>
                 </ol>
+                <p>
+                    As you can see, Docker falls right into the third category
+                    as a tool I feel is both necessary and enjoyable to use.
+                    Tools like Docker make me <i>want</i> to have a project
+                    where I need it. I hope I will be able to learn more about
+                    docker, specifically about Docker-Compose and Kubernetes, as
+                    I tackle more complex projects.
+                </p>
             </p>
         </>
     );
