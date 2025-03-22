@@ -2,19 +2,24 @@ import Latex from "react-latex";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { monoBlue } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Helmet } from "react-helmet";
 
 export default function Post8() {
     return (
         <>
-            <meta
-                name="description"
-                content="Interactive demo, Mathematical explanation, and Programmatic implemention of PID Controls."
-            ></meta>
-            <meta
-                name="keywords"
-                content="pid, control, demo, demonstration, program, code, math"
-            ></meta>
-            <meta name="author" content="Luke Scholler"></meta>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Interactive demo, Mathematical explanation, and Programmatic implemention of PID Controls."
+                ></meta>
+                <meta
+                    name="keywords"
+                    content="pid, control, demo, demonstration, program, code, math"
+                ></meta>
+                <meta name="author" content="Luke Scholler"></meta>
+                <title>An Exploration of PID Control</title>
+            </Helmet>
+
             <div
                 style={{
                     width: "100%",
