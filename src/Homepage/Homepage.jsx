@@ -24,21 +24,25 @@ export default function Homepege() {
             <div
                 style={{
                     width: "100%",
+                    padding: "10px",
+                    boxSizing: "border-box",
                 }}
                 className="mobile"
             >
-                <div style={{ fontSize: "5rem" }}>Hi! I'm Luke 👋</div>
+                <div style={{ fontSize: "4rem" }}>Hi! I'm Luke 👋</div>
                 <hr></hr>
                 <div
                     style={{
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
+                        marginTop: "20px",
+                        marginBottom: "20px",
                     }}
                 >
                     <div
                         style={{
-                            fontSize: "2rem",
+                            fontSize: "1.5rem",
                             flex: "1",
                         }}
                     >
@@ -52,7 +56,7 @@ export default function Homepege() {
                             width="90%"
                             style={{
                                 border: "3px solid var(--yellow)",
-                                borderRadius: "50%",
+                                borderRadius: "2%",
                                 boxShadow: "-5px 5px 0 black",
                             }}
                         ></img>
@@ -93,7 +97,7 @@ export default function Homepege() {
                         top: "50%",
                         left: "10%",
                         transform: "translate(-10%, -50%)",
-                        fontSize: "40px",
+                        fontSize: "2rem",
                         margin: "auto",
                         boxSizing: "border-box",
                     }}

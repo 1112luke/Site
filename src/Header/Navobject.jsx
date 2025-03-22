@@ -30,6 +30,7 @@ export default function Navobject({ obj, color }) {
                             style={{
                                 color: color,
                                 fontWeight: "400",
+                                fontSize: "1.5rem",
                             }}
                         >
                             {obj.title}

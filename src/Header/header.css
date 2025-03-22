@@ -2,6 +2,7 @@
 height: 60px;
 width:100%;
 display:flex;
+overflow:hidden
 }
 
 .centerbox{
@@ -17,7 +18,7 @@ a{
 
 #headerleft{
 flex:1;
-font-size:30px;
+font-size:1.2rem;
 justify-content: left;
 padding-left:20px;
 color:var(--yellow);
@@ -40,7 +41,6 @@ max-width:500px;
     padding:20px;
 }
 .navobject{
-    font-size: 25px;
     color:white;
     position:relative;
     flex:1;

@@ -81,6 +81,10 @@ body{
 
 @media (min-width:720px){
   
+  :root{
+    font-size:x-large
+  }
+
   .mobile{
     display:none;
   }
@@ -88,6 +92,10 @@ body{
 
 @media (max-width:720px){
   
+  :root{
+    font-size:small
+  }
+
   .wide{
     display:none;
   }

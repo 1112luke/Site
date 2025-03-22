@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
 import "./Card.css";
-import { RxCross2 } from "react-icons/rx";
 
 export default function Card({ title, date, description, id, tags, index }) {
     return (
@@ -19,7 +18,7 @@ export default function Card({ title, date, description, id, tags, index }) {
                 >
                     <h2>{title}</h2>
                     <h4>{date}</h4>
-                    <p>{description}</p>
+                    <p style={{ fontSize: "1.2rem" }}>{description}</p>
                     <div id="tagbox">
                         {tags.map((tag, index) => {
                             return (
