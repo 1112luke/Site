@@ -7,6 +7,11 @@ import Blog from "./Blog/Blog";
 import Post from "./Blog/Post";
 import Pidemo from "./Codes/PID/Pidemo";
 
+//google analytics
+import ReactGA from "react-ga";
+const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
+ReactGA.initialize(TRACKING_ID);
+
 function App() {
     return (
         <>
