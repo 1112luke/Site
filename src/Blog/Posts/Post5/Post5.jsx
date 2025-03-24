@@ -1,4 +1,6 @@
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import Card from "../../Card";
+import { monoBlue } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Post5() {
     function dateToWords(date) {
@@ -29,10 +31,10 @@ export default function Post5() {
             </div>
             <h3>History</h3>
             <p>
-                This website has been a long time coming, yet I built it up to
-                this point in less than a month... Let me explain.
+                This website has been in the works for almost a year, yet I
+                built this version up to this point in less than a month... Let
+                me explain.
             </p>
-
             <p>
                 This is the third iteration of my website. The first was made
                 during my senior year of high school, and was pure HTML and CSS.
@@ -52,7 +54,6 @@ export default function Post5() {
                 of all of my projects and posts. It was going to be glorious...
                 or so I thought.
             </p>
-
             <p>
                 After working on and off for about a month and a half, I had the
                 following prototype:
@@ -76,16 +77,16 @@ export default function Post5() {
             </div>
             <p>
                 If you mess with the above website a bit, you will probably
-                notice three things
-                <ol>
-                    <li>it is cool</li>
-                    <li>it bears strong resemblance to the current website</li>
-                    <li>
-                        it is hard to navigate, buggy, confusing, bulky, and
-                        unintuitive
-                    </li>
-                </ol>
+                notice three things:
             </p>
+            <ol>
+                <li>it is cool</li>
+                <li>it bears strong resemblance to the current website</li>
+                <li>
+                    it is hard to navigate, buggy, confusing, bulky, and
+                    unintuitive
+                </li>
+            </ol>
             <p>
                 At a certain point, I finally decided to scrap the project, and
                 I was so upset. The reality is, it <strong>was</strong>{" "}
@@ -164,7 +165,10 @@ export default function Post5() {
                 the challenge of styling all of my components using vanilla CSS.
                 Now, lets break down the tools I use one by one.
             </p>
-
+            <p>
+                I'll be using this card element I created for the following
+                explanations:
+            </p>
             <Card
                 title="Example"
                 id="ex"
@@ -174,7 +178,20 @@ export default function Post5() {
                 blank={true}
                 index={1}
             />
-
+            <p>rendered using the following code:</p>
+            <SyntaxHighlighter
+                language="javascript"
+                id="syntax"
+                style={monoBlue}
+            >{`<Card
+                title="Example"
+                id="ex"
+                date={dateToWords(new Date())}
+                description="Ullamco culpa non occaecat cupidatat reprehenderit esse amet ex exercitation commodo pariatur consequat dolor et magna. In do anim id duis in labore ad irure dolor adipisicing consectetur veniam aute anim proident. Eu in cillum quis."
+                tags={["example1", "example2"]}
+                blank={true}
+                index={1}
+            />`}</SyntaxHighlighter>
             <p>
                 <b>React</b>
             </p>
@@ -184,8 +201,180 @@ export default function Post5() {
                 really good at doing the same thing over and over again. When I
                 am able to design a component in React and have it map to a wide
                 array of data, I feel powerful, like I am taking advantage of
-                the computer. Let's look at an example from this site, the cards
-                on my all posts page:
+                the computer. As you can see above, Creating the card is easy
+                with the custom react component that I made. The short lines of
+                code above really translate to the following:
+            </p>
+            <SyntaxHighlighter
+                language="javascript"
+                id="syntax"
+                style={monoBlue}
+            >{` <>
+            <Link>
+                <motion.div
+                    id="container"
+                    whileHover={{
+                        backgroundColor: "#325671",
+                        boxShadow: "-5px 5px #285071",
+                        scale: 1.01,
+                        rotate: index % 2 ? 0.5 : -0.5,
+                    }}
+                    transition={{ type: "tween", duration: 0.2 }}
+                >
+                    <h2>{title}</h2>
+                    <h4>{date}</h4>
+                    <p >{description}</p>
+                    <div id="tagbox">
+                        {tags.map((tag, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    
+                                >
+                                    tag
+                                </div>
+                            );
+                        })}
+                    </div>
+                </motion.div>
+            </Link>
+        </>`}</SyntaxHighlighter>
+            <p>
+                This is a lot of code encapsulated by a simple component in
+                react!
+            </p>
+            <p>
+                It gets better though. To create a list of the card elements,
+                each with different data, we can use a javascript map function
+                to spawn many cards based on an array of data. Here is how that
+                works:
+            </p>
+            <SyntaxHighlighter
+                language="javascript"
+                id="syntax"
+                style={monoBlue}
+            >{`const posts = [
+    {
+        id: "I've-Discovered-Docker",
+        public: true,
+        title: "I've Discovered Docker And My Life Will Never Be The Same",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-23"),
+        tags: ["blog"],
+        component: <Post1></Post1>,
+    },
+    {
+        id: "Post-2",
+        public: false,
+        title: "The Useless Box: Do you Remember These?",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-23"),
+        tags: ["blog", "project"],
+        component: <Post2></Post2>,
+    },
+    {
+        id: "Post-3",
+        public: false,
+        title: "How I created a Linkedin AI bot that talked to my friend for three hours",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-24"),
+        tags: ["blog", "project"],
+        component: <Post2></Post2>,
+    },
+    {
+        id: "Post-4",
+        public: false,
+        title: "Cobalt Blue EVERYTHING",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-26"),
+        tags: ["blog"],
+        component: <Post2></Post2>,
+    },
+    {
+        id: "this-website",
+        public: true,
+        title: "The Story of This Website",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-03-21"),
+        tags: ["blog", "project"],
+        component: <Post5></Post5>,
+    },
+    {
+        id: "Post-6",
+        public: false,
+        title: "Sorting algorithms, rust, and web assembly",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-27"),
+        tags: ["blog", "project"],
+        component: <Post2></Post2>,
+    },
+    {
+        id: "thinking-in-code",
+        public: false,
+        title: "Thinking in Code",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-02-26"),
+        tags: ["blog", "project"],
+        component: <Post7></Post7>,
+    },
+    {
+        id: "pid-control",
+        public: true,
+        title: "An Exploration of PID Control",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-03-17"),
+        tags: ["blog", "project"],
+        component: <Post8></Post8>,
+    },
+    {
+        id: "smells-like-calculus",
+        public: true,
+        title: "A Calculus Parody Music Video",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-03-20"),
+        tags: ["blog", "project"],
+        component: <Post9></Post9>,
+    },
+];
+
+{posts.map((post, index) =>
+                post.public ? (
+                    <div key={post.id}>
+                        <Card
+                            title={post.title}
+                            id={post.id}
+                            date={dateToWords(post.date)}
+                            description={post.description}
+                            tags={post.tags}
+                            index={index}
+                        />
+                        <br />
+                    </div>
+                ) : null
+            )}`}</SyntaxHighlighter>
+            <p>
+                The above contains an array of json objects, each representing a
+                post on my webpage. We can then use posts.map on the data to
+                display a card for each element on the array. AMAZING!
+            </p>
+            <h3>Framer Motion</h3>
+            <p>
+                I use framer motion for most of the animation on this site.
+                Examples include the underline bars in my header, the hover
+                effect on the card above, or even the mouse tracking feature of
+                the cube on the front page of this website. I could explain it,
+                but{" "}
+                <a href="https://motion.dev/" target="_blank">
+                    their website
+                </a>{" "}
+                is just too good that I'm going to direct you there if you want
+                to learn more.
+            </p>
+
+            <h3>Three.js</h3>
+            <p>
+                For all the 3D components on this website, I am using Three.js,
+                specifically react-three-fiber, an implementation for react.
             </p>
         </>
     );

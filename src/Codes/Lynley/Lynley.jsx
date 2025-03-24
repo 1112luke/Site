@@ -41,6 +41,7 @@ export default function Lynley() {
                 >
                     <motion.div
                         whileHover={{ scale: 1.5 }}
+                        whileTap={{ scale: 1.5 }}
                         style={{
                             display: "flex",
                             justifyContent: "center",
