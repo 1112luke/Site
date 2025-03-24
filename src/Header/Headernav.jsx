@@ -3,8 +3,8 @@ import "../App.css";
 import "./header.css";
 import Navobject from "./Navobject";
 import { useState } from "react";
-import Pagenav from "./pageNav";
 import { RxCross2 } from "react-icons/rx";
+import Pagenav from "./Pagenav";
 
 export default function Headernav({ color = "white" }) {
     const nav = [

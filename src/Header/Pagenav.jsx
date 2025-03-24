@@ -1,6 +1,6 @@
 import Navobject from "./Navobject";
 
-export default function Pagenav({ nav, color }) {
+export default function Pagenav({ nav, color, setopen }) {
     return (
         <>
             <div
@@ -33,6 +33,7 @@ export default function Pagenav({ nav, color }) {
                                 <Navobject
                                     obj={obj}
                                     color={"white"}
+                                    setopen={setopen}
                                 ></Navobject>
                                 <hr></hr>
                             </div>

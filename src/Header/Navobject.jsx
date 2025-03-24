@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
 import "../App.css";
 
-export default function Navobject({ obj, color }) {
+export default function Navobject({ obj, color, setopen }) {
     const underwidth = useMotionValue(0);
     const springunderwidth = useSpring(underwidth, {
         stiffness: 300,
@@ -23,6 +23,9 @@ export default function Navobject({ obj, color }) {
                         {
                             underwidth.set(0);
                         }
+                    }}
+                    onClick={() => {
+                        setopen && setopen(false);
                     }}
                     to={obj.link}
                 >
