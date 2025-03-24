@@ -1,4 +1,13 @@
+import Card from "../../Card";
+
 export default function Post5() {
+    function dateToWords(date) {
+        const year = date.getFullYear();
+        const month = date.toLocaleString("default", { month: "long" });
+        const day = date.getDate();
+        return `${month} ${day + 1}, ${year}`;
+    }
+
     return (
         <>
             <div
@@ -108,9 +117,75 @@ export default function Post5() {
                 come from a failure like the previous one that design and UI
                 would come first.{" "}
             </p>
+            <h3>The Tools I Use</h3>
+            <p>
+                In no particular order, the main tools I use to create this
+                website are:
+            </p>
+            <ul>
+                <li>
+                    <a href="https://react.dev/" target="_blank">
+                        React
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://r3f.docs.pmnd.rs/getting-started/introduction"
+                        target="_blank"
+                    >
+                        Three.js (react-three-fiber)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://motion.dev/" target="_blank">
+                        Motion (previously Framer Motion)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.netlify.com/" target="_blank">
+                        Netlify
+                    </a>
+                </li>
+            </ul>
+            <p>
+                As you can see, the stack is relatively simple. I hear many
+                things about{" "}
+                <a href="https://nextjs.org/learn" target="_blank">
+                    Next.js
+                </a>{" "}
+                for server side rendeering or{" "}
+                <a href="https://tailwindcss.com/" target="_blank">
+                    Tailwind
+                </a>{" "}
+                for CSS, but in my experience I have never felt limited by pure
+                react and standard CSS. While my website might not be the
+                fastest or the most pretty looking, I enjoy being relatively
+                close to the actual HTML that my webpage will display and like
+                the challenge of styling all of my components using vanilla CSS.
+                Now, lets break down the tools I use one by one.
+            </p>
 
-            <i>ARTICLE NOT FINISHED</i>
-            <p></p>
+            <Card
+                title="Example"
+                id="ex"
+                date={dateToWords(new Date())}
+                description="Ullamco culpa non occaecat cupidatat reprehenderit esse amet ex exercitation commodo pariatur consequat dolor et magna. In do anim id duis in labore ad irure dolor adipisicing consectetur veniam aute anim proident. Eu in cillum quis."
+                tags={["example1", "example2"]}
+                index={1}
+            />
+
+            <p>
+                <b>React</b>
+            </p>
+            <p>
+                Of all the programmatic paradigmns, I find compartmentalization
+                and reuseability to be the most satisfying. Computers are really
+                really good at doing the same thing over and over again. When I
+                am able to design a component in React and have it map to a wide
+                array of data, I feel powerful, like I am taking advantage of
+                the computer. Let's look at an example from this site, the cards
+                on my all posts page:
+            </p>
         </>
     );
 }

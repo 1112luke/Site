@@ -49,6 +49,10 @@ max-width:500px;
     align-items: center;
 }
 
+#navtext{
+    font-size: 1.8rem;
+}
+
 .punderline{
     position:relative;
     top:-31px;
@@ -68,6 +72,44 @@ max-width:500px;
 }
 
 @media (max-width:720px){
+
+    .wide{
+        display:none;
+    }
+
+    #headernav{
+        display:none;
+    }
+
+    #navtext{
+        font-size: 4rem;
+    }
+
+    .punderline{
+        display:none
+    }
+
+    #headerright{
+        justify-content: right;
+        padding-right: 4rem;
+        flex:0.2;
+    }
+
+    #headerleft{
+        font-size:3rem;
+    }
+
+    .wip{
+        display:none;
+    }
+}
+
+@media (min-width:720px){
+
+    .mobile{
+        display:none;
+    }
+
     .wip{
         display:none;
     }

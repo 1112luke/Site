@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { motion, useSpring, useTransform, useMotionValue } from "framer-motion";
+import "../App.css";
 
 export default function Navobject({ obj, color }) {
     const underwidth = useMotionValue(0);
@@ -11,7 +12,7 @@ export default function Navobject({ obj, color }) {
 
     return (
         <>
-            <div className="navobject">
+            <div className={`navobject`}>
                 <Link
                     onMouseEnter={() => {
                         {
@@ -30,8 +31,8 @@ export default function Navobject({ obj, color }) {
                             style={{
                                 color: color,
                                 fontWeight: "400",
-                                fontSize: "1.8rem",
                             }}
+                            id="navtext"
                         >
                             {obj.title}
                         </p>

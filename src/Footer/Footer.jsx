@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import Headernav from "../Header/Headernav";
 import { GrGithub, GrInstagram, GrLinkedin } from "react-icons/gr";
 import { IoIosArrowUp } from "react-icons/io";
+import "../Header/Header.css";
 
 export default function Footer() {
     return (
