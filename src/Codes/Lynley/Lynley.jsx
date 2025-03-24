@@ -61,7 +61,8 @@ export default function Lynley() {
                         fontSize: "5rem",
                     }}
                 >
-                    My heart beats for <strong> YOU</strong>
+                    My heart beats for&nbsp;
+                    <strong>YOU</strong>
                 </div>
             </div>
         </>
