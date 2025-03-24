@@ -2,10 +2,18 @@ import { Link } from "react-router";
 import { motion } from "motion/react";
 import "./Card.css";
 
-export default function Card({ title, date, description, id, tags, index }) {
+export default function Card({
+    title,
+    date,
+    description,
+    id,
+    tags,
+    blank = false,
+    index,
+}) {
     return (
         <>
-            <Link to={`/${id}`}>
+            <Link to={blank ? "#" : `/${id}`}>
                 <motion.div
                     id="container"
                     whileHover={{

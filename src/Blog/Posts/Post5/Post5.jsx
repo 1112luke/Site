@@ -171,6 +171,7 @@ export default function Post5() {
                 date={dateToWords(new Date())}
                 description="Ullamco culpa non occaecat cupidatat reprehenderit esse amet ex exercitation commodo pariatur consequat dolor et magna. In do anim id duis in labore ad irure dolor adipisicing consectetur veniam aute anim proident. Eu in cillum quis."
                 tags={["example1", "example2"]}
+                blank={true}
                 index={1}
             />
 

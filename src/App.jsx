@@ -9,6 +9,7 @@ import Pidemo from "./Codes/PID/Pidemo";
 
 //google analytics
 import ReactGA from "react-ga";
+import Lynley from "./Codes/Lynley/Lynley";
 const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
@@ -27,6 +28,10 @@ function App() {
                     <Route
                         path="/codes/pidemo"
                         element={<Pidemo></Pidemo>}
+                    ></Route>
+                    <Route
+                        path="/codes/lynley"
+                        element={<Lynley></Lynley>}
                     ></Route>
                 </Routes>
             </BrowserRouter>

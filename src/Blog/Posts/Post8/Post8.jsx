@@ -14,7 +14,7 @@ export default function Post8() {
                 ></meta>
                 <meta
                     name="keywords"
-                    content="pid, control, demo, demonstration, program, code, math"
+                    content="pid, control, demo, demonstration, program, code, math, online"
                 ></meta>
                 <meta name="author" content="Luke Scholler"></meta>
                 <title>An Exploration of PID Control</title>
