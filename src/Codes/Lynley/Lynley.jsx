@@ -1,9 +1,28 @@
 import { FaHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
+import song from "/AML.mp3";
+import { useEffect, useRef, useState } from "react";
 
 export default function Lynley() {
+    const audioRef = useRef(new Audio(song));
+
+    const [playing, setplaying] = useState(false);
+
+    useEffect(() => {
+        audioRef.current = new Audio(song);
+
+        if (playing) {
+            audioRef.current.play();
+        }
+        console.log(playing);
+    }, [playing]);
+
     return (
         <>
+            <audio
+                ref={audioRef}
+                style={{ position: "fixed", zIndex: "500" }}
+            ></audio>
             <div
                 style={{
                     position: "fixed",
@@ -40,6 +59,16 @@ export default function Lynley() {
                     }}
                 >
                     <motion.div
+                        onClick={() => {
+                            if (!playing) {
+                                setplaying(true);
+                            }
+                        }}
+                        onTap={() => {
+                            if (!playing) {
+                                setplaying(true);
+                            }
+                        }}
                         whileHover={{ scale: 1.5 }}
                         whileTap={{ scale: 1.5 }}
                         style={{

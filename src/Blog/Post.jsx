@@ -22,7 +22,7 @@ export default function Post() {
                 found = true;
             }
         });
-
+        //navigate to 404 if post is not valid or not public
         if (!found) {
             navigate("/404", { replace: true });
         }
