@@ -58,7 +58,8 @@ const posts = [
         id: "this-website",
         public: true,
         title: "The Story of This Website",
-        description: lorem.generateSentences(3),
+        description:
+            "This website has been in the works for almost a year, yet I built this version it up to this point in less than a month... Let me explain.",
         date: new Date("2025-03-21"),
         tags: ["blog", "project"],
         component: <Post5></Post5>,
@@ -85,7 +86,8 @@ const posts = [
         id: "pid-control",
         public: true,
         title: "An Exploration of PID Control",
-        description: lorem.generateSentences(3),
+        description:
+            "The article I wish I came across when I was learning PID controls. I present an interactive demo, mathematical analysis, and programmatic implementation.",
         date: new Date("2025-03-17"),
         tags: ["blog", "project"],
         component: <Post8></Post8>,
@@ -94,7 +96,8 @@ const posts = [
         id: "smells-like-calculus",
         public: true,
         title: "A Calculus Parody Music Video",
-        description: lorem.generateSentences(3),
+        description:
+            "My junior year of high school, we were assigned a final project in AP Calc AB and one of our options was to make a music video. This does seem a bit odd, doesnt it? A music video? For calculus?",
         date: new Date("2025-03-20"),
         tags: ["blog", "project"],
         component: <Post9></Post9>,

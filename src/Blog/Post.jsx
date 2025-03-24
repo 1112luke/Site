@@ -1,4 +1,4 @@
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Header from "../Header/Header";
 import posts from "./Posts/Posts";
 import { useParams } from "react-router";
@@ -7,18 +7,25 @@ import "./Post.css";
 import Footer from "../Footer/Footer";
 
 export default function Post() {
+    const navigate = useNavigate();
+
     //get params from route
     const { id } = useParams();
-    console.log(id);
 
     const [currpost, setcurrpost] = useState(0);
 
     useEffect(() => {
+        let found = false;
         posts.forEach((post) => {
-            if (post.id == id) {
+            if (post.id == id && post.public) {
                 setcurrpost(post);
+                found = true;
             }
         });
+
+        if (!found) {
+            navigate("/404", { replace: true });
+        }
     }, []);
 
     function dateToWords(date) {
