@@ -50,7 +50,7 @@ export default function Headernav({ color = "white" }) {
                             top: "15%",
                             transform: "translate(-50%, -50%)",
                             color: "var(--yellow)",
-                            zIndex: 5000,
+                            zIndex: -1,
                         }}
                     ></RxCross2>
                 ) : (

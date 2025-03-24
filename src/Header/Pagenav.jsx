@@ -15,6 +15,7 @@ export default function Pagenav({ nav, color, setopen }) {
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: "var(--darkblue)",
+                    zindex: "-10",
                 }}
             >
                 <div
