@@ -22,7 +22,8 @@ const posts = [
         id: "I've-Discovered-Docker",
         public: true,
         title: "I've Discovered Docker And My Life Will Never Be The Same",
-        description: lorem.generateSentences(3),
+        description:
+            "Docker is one of the most prevalent tools in tech, yet up to this point I never understood it. This is the story of how that changed.",
         date: new Date("2025-02-23"),
         tags: ["blog"],
         component: <Post1></Post1>,
