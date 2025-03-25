@@ -31,7 +31,9 @@ export default function Spinbox({ hovered }) {
         damping: 10,
     });
 
-    const [image, setimage] = useState("Me.jpeg");
+    const [image, setimage] = useState(0);
+    const [loadedimages, setloadedimages] = useState([]);
+    const [loaded, setloaded] = useState(false);
     const [spinning, setspinning] = useState(false);
     const cubesize = useMotionValue(1);
     const smoothsize = useSpring(cubesize, { stiffness: 200, damping: 18 });
@@ -55,16 +57,16 @@ export default function Spinbox({ hovered }) {
         setTimeout(() => {
             switch (hovered) {
                 case "electrical":
-                    setimage("/electric.jpeg");
+                    setimage(loadedimages[1]);
                     break;
                 case "ND":
-                    setimage("/Nd.jpg");
+                    setimage(loadedimages[2]);
                     break;
                 case "electronics":
-                    setimage("/electronics.png");
+                    setimage(loadedimages[3]);
                     break;
                 case "none":
-                    setimage("/Me.jpeg");
+                    setimage(loadedimages[0]);
                     break;
             }
         }, 100);
@@ -81,6 +83,28 @@ export default function Spinbox({ hovered }) {
     }
 
     useEffect(() => {
+        setTimeout(() => {
+            setimage(loadedimages[0]);
+        }, 100);
+    }, [loadedimages]);
+
+    useEffect(() => {
+        //load images
+        var toLoad = [
+            "/Me.jpeg",
+            "/electric.jpeg",
+            "/Nd.jpg",
+            "electronics.png",
+        ];
+        var loaded = [];
+        toLoad.forEach((image) => {
+            var img = new Image();
+            img.src = image;
+            loaded.push(image);
+        });
+        setloadedimages(loaded);
+
+        //add listeners
         window.addEventListener("pointermove", handlePointerMove);
 
         window.addEventListener("resize", handleResize);
@@ -138,7 +162,7 @@ export default function Spinbox({ hovered }) {
                         transform
                         occlude
                     >
-                        {!spinning && (
+                        {!spinning && image && (
                             <img
                                 width="200px"
                                 draggable={false}
