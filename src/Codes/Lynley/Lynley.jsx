@@ -91,8 +91,9 @@ export default function Lynley() {
                         fontSize: "5rem",
                     }}
                 >
-                    My heart beats for&nbsp;
-                    <strong>YOU</strong>
+                    <div style={{ textAlign: "center" }}>
+                        My heart beats for&nbsp; <strong>YOU</strong>
+                    </div>
                 </div>
             </div>
         </>
