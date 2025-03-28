@@ -1,3 +1,4 @@
+/*
 export default class Sortar {
     constructor(size, setbars) {
         var arr = [];
@@ -100,3 +101,4 @@ export default class Sortar {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }
+*/

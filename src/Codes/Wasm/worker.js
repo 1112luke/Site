@@ -1,3 +1,4 @@
+/*
 self.onmessage = async (e) => {
     console.log("Message received from main script");
 
@@ -120,3 +121,4 @@ export default class Sortar1 {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 }
+*/
