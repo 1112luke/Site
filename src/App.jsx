@@ -35,7 +35,10 @@ function App() {
                         path="/codes/lynley"
                         element={<Lynley></Lynley>}
                     ></Route>
+                    {/*
                     <Route path="/codes/Wasm" element={<Wasm></Wasm>}></Route>
+                    */}
+
                     <Route path="/404" element={<Nopath></Nopath>}></Route>
                     <Route path="*" element={<Nopath></Nopath>}></Route>
                 </Routes>
