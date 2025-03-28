@@ -111,6 +111,6 @@ max-width:500px;
     }
 
     .wip{
-        display:none;
+        display:fixed;
     }
 }

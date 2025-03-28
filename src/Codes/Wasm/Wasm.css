@@ -1,0 +1,17 @@
+#leftbar{
+    flex:0.5;
+    border-right:1px solid var(--yellow);
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main{
+    flex:1;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

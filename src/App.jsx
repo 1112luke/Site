@@ -11,6 +11,7 @@ import Pidemo from "./Codes/PID/Pidemo";
 import ReactGA from "react-ga";
 import Lynley from "./Codes/Lynley/Lynley";
 import Nopath from "./Blog/Components/Nopath";
+import Wasm from "./Codes/wasm/Wasm";
 const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
@@ -34,6 +35,7 @@ function App() {
                         path="/codes/lynley"
                         element={<Lynley></Lynley>}
                     ></Route>
+                    <Route path="/codes/Wasm" element={<Wasm></Wasm>}></Route>
                     <Route path="/404" element={<Nopath></Nopath>}></Route>
                     <Route path="*" element={<Nopath></Nopath>}></Route>
                 </Routes>
