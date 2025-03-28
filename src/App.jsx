@@ -11,7 +11,7 @@ import Pidemo from "./Codes/PID/Pidemo";
 import ReactGA from "react-ga";
 import Lynley from "./Codes/Lynley/Lynley";
 import Nopath from "./Blog/Components/Nopath";
-import Wasm from "./Codes/wasm/Wasm";
+import Wasm from "./Codes/Wasm/Wasm";
 const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
 
