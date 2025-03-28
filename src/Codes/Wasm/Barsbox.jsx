@@ -1,3 +1,4 @@
+/*
 import { useEffect, useState } from "react";
 
 export default function Barsbox({ bars }) {
@@ -43,3 +44,4 @@ export default function Barsbox({ bars }) {
         </>
     );
 }
+*/

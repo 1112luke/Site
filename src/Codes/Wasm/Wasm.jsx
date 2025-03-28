@@ -1,3 +1,4 @@
+/*
 import { useEffect, useRef, useState } from "react";
 import * as wasm from "wasm-test";
 import { memory } from "wasm-test/wasm_test2_bg.wasm";
@@ -70,11 +71,11 @@ export default function Wasm() {
         }
             */
 
-        /*
+/*
         data.current.bubblesort();
         console.log("here");
         setrustbars([...get_bars()]);
-        */
+        
     }
 
     async function sortbars() {
@@ -92,11 +93,11 @@ export default function Wasm() {
         }
             */
 
-        /*
+/*
         data.current.bubblesort();
         console.log("here");
         setrustbars([...get_bars()]);
-        */
+        
     }
 
     function get_bars() {
@@ -186,3 +187,4 @@ export default function Wasm() {
         </>
     );
 }
+*/
