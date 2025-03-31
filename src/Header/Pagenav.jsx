@@ -1,3 +1,4 @@
+import { RxCross2 } from "react-icons/rx";
 import Navobject from "./Navobject";
 
 export default function Pagenav({ nav, color, setopen }) {
@@ -28,6 +29,17 @@ export default function Pagenav({ nav, color, setopen }) {
                         flexDirection: "column",
                     }}
                 >
+                    <RxCross2
+                        size="6rem"
+                        style={{
+                            position: "fixed",
+                            left: "50%",
+                            top: "15%",
+                            transform: "translate(-50%, -50%)",
+                            color: "var(--yellow)",
+                        }}
+                    ></RxCross2>
+
                     {nav.map((obj, index) => {
                         return (
                             <div key={index}>

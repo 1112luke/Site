@@ -8,7 +8,9 @@ export default function Navobject({ obj, color, setopen }) {
         stiffness: 300,
         damping: 40,
     });
-    const springpercent = useTransform(() => `${springunderwidth.get()}%`);
+    const springpercent = useTransform(
+        () => `${springunderwidth.get() > 1.5 ? springunderwidth.get() : 0}%`
+    );
 
     return (
         <>

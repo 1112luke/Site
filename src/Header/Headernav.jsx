@@ -2,7 +2,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import "../App.css";
 import "./header.css";
 import Navobject from "./Navobject";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import Pagenav from "./Pagenav";
 
@@ -14,6 +14,14 @@ export default function Headernav({ color = "white" }) {
     ];
 
     const [menuOpen, setmenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (menuOpen) {
+            document.getElementsByTagName("html")[0].style.overflow = "hidden";
+        } else {
+            document.getElementsByTagName("html")[0].style.overflow = "scroll";
+        }
+    }, [menuOpen]);
 
     return (
         <>

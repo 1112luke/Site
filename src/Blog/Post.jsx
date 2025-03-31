@@ -2,12 +2,18 @@ import { useLocation, useNavigate } from "react-router";
 import Header from "../Header/Header";
 import posts from "./Posts/Posts";
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Post.css";
 import Footer from "../Footer/Footer";
 
 export default function Post() {
     const navigate = useNavigate();
+    var id1 = useRef();
+    var id2 = useRef();
+    var id3 = useRef();
+    var id4 = useRef();
+
+    const [on, seton] = useState(false);
 
     //get params from route
     const { id } = useParams();
@@ -28,6 +34,26 @@ export default function Post() {
         }
     }, []);
 
+    function turnOn() {
+        var offset = 150;
+        var delay = 40;
+
+        seton(true);
+
+        id1.current = setTimeout(() => {
+            seton(false);
+        }, offset);
+        id2.current = setTimeout(() => {
+            seton(true);
+        }, offset + delay);
+        id3.current = setTimeout(() => {
+            seton(false);
+        }, offset + 2 * delay);
+        id4.current = setTimeout(() => {
+            seton(true);
+        }, offset + 3 * delay);
+    }
+
     function dateToWords(date) {
         var year = date.getFullYear();
         var month = date.toLocaleString("default", { month: "long" });
@@ -40,7 +66,29 @@ export default function Post() {
             <Header></Header>
             {currpost != 0 && (
                 <article>
-                    <h1>{currpost.title}</h1>
+                    <h1
+                        style={{
+                            color: "white",
+                            textShadow: on
+                                ? "0px 0px 0px var(--yellow), 0px 0px 20px var(--yellow), 0px 0px 15px var(--yellow), 0px 0px 10px white"
+                                : "none",
+                            width: "fit-content",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                        }}
+                        onMouseEnter={() => {
+                            turnOn();
+                        }}
+                        onMouseLeave={() => {
+                            clearTimeout(id1.current);
+                            clearTimeout(id2.current);
+                            clearTimeout(id3.current);
+                            clearTimeout(id4.current);
+                            seton(false);
+                        }}
+                    >
+                        {currpost.title}
+                    </h1>
                     <div
                         style={{
                             width: "70%",
