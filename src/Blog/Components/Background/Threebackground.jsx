@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import Cube from "./Cube";
 
-const ThreeBackground = () => {
+const ThreeBackground = ({ abs = false }) => {
     const num_cubes = 30;
 
     var [cubes, setcubes] = useState([]);
@@ -36,11 +36,11 @@ const ThreeBackground = () => {
                 pixelRatio: 20,
             }}
             style={{
-                position: "fixed",
+                position: abs ? "absolute" : "fixed",
                 top: 0,
                 left: 0,
-                width: "100vw",
-                height: "100vh",
+                width: abs ? "100%" : "100vw",
+                height: abs ? "100%" : "100vh",
                 zIndex: -1,
             }}
         >

@@ -1,6 +1,8 @@
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import Card from "../../Card";
 import { monoBlue } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Headernav from "../../../Header/Headernav";
+import ThreeBackground from "../../Components/Background/Threebackground";
 
 export default function Post5() {
     function dateToWords(date) {
@@ -373,8 +375,167 @@ export default function Post5() {
 
             <h3>Three.js</h3>
             <p>
-                For all the 3D components on this website, I am using Three.js,
-                specifically react-three-fiber, an implementation for react.
+                For all the 3D components on this website, I am using{" "}
+                <a href="https://threejs.org/" target="_blank">
+                    Three.js
+                </a>
+                , specifically {` `}
+                <a
+                    href="https://r3f.docs.pmnd.rs/getting-started/introduction"
+                    target="_blank"
+                >
+                    react-three-fiber
+                </a>
+                , an implementation of three for react. See below the background
+                I made for some pages on this website website:
+            </p>
+            <div
+                style={{
+                    width: "100%",
+                    aspectRatio: "1920/1080",
+                    position: "relative",
+                    border: "1px solid var(--yellow)",
+                }}
+            >
+                <ThreeBackground abs={true}></ThreeBackground>
+            </div>
+
+            <p>
+                If you look closely, you see that the cubes are rotating
+                randomly. You might also notice that the cubes are different
+                with each refresh of this page.
+            </p>
+
+            <p>The code for this component is shown below:</p>
+            <SyntaxHighlighter
+                id="syntax"
+                language="javascript"
+                style={monoBlue}
+            >{`import React, { useEffect, useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import Cube from "./Cube";
+
+const ThreeBackground = ({ abs = false }) => {
+    const num_cubes = 30;
+
+    var [cubes, setcubes] = useState([]);
+    //generate starting point for unique cubes
+    useEffect(() => {
+        var tempcubes = [];
+
+        var xextent = 160;
+        var yextent = 120;
+        var zextent = 160;
+
+        for (var i = 0; i < num_cubes; i++) {
+            tempcubes.push({
+                x: Math.floor(Math.random() * xextent) - xextent / 2,
+                y: Math.floor(Math.random() * yextent) - yextent / 2,
+                z: Math.floor(Math.random() * zextent) - zextent / 2 - 80,
+                rot: {
+                    x: Math.floor(Math.random() * 360),
+                    y: Math.floor(Math.random() * 360),
+                    z: Math.floor(Math.random() * 360),
+                },
+            });
+        }
+        setcubes(tempcubes);
+    }, []);
+
+    return (
+        <Canvas
+            gl={{
+                pixelRatio: 20,
+            }}
+            style={{
+                position: abs ? "absolute" : "fixed",
+                top: 0,
+                left: 0,
+                width: abs ? "100%" : "100vw",
+                height: abs ? "100%" : "100vh",
+                zIndex: -1,
+            }}
+        >
+            <ambientLight intensity={1} />
+            <pointLight position={[10, 10, 10]} />
+            {cubes.map((cube, index) => {
+                return (
+                    <Cube
+                        x={cube.x}
+                        y={cube.y}
+                        z={cube.z}
+                        rot={cube.rot}
+                        key={index}
+                    ></Cube>
+                );
+            })}
+        </Canvas>
+    );
+};
+
+export default ThreeBackground;
+`}</SyntaxHighlighter>
+            <p>
+                This component can be broken down into two main parts, the data
+                structure for each cube and the rendering of the cubes. Let's
+                start with the data structure.
+            </p>
+
+            <p>
+                All of the logic for creating the cubes data structure happens
+                within a <i>useEffect</i> react hook with no dependencies so
+                that it only runs when the component is mounted. I have some
+                variables to setup the extent of the bounds for my scene to
+                render all of the cubes within. Then, in a loop, I create a set
+                of random cubes as objects with attributes for their rotation
+                and position.
+            </p>
+
+            <p>
+                To render the cubes, I am using some basic react-three-fiber
+                components. I start with a Canvas filling the screen. To this
+                scene, I add an ambient light and a point light, then map all of
+                my cubes to a custom Cube component. Within the cube component,
+                there is some logic to randomly increment each cube's rotation
+                at a set interval, causing them each to rotate in their own way.
+            </p>
+
+            <h3>Netlify</h3>
+            <p>
+                {" "}
+                I host this website on{" "}
+                <a href="https://netlify.com" target="_blank">
+                    Netlify
+                </a>
+                . Using this service, I can deploy my react site straight from
+                github. To push live changes to the site, it is as simple as
+                merging pull requests into the github repo. The rest is taken
+                care of automatically.
+            </p>
+
+            <h3>Things to Improve</h3>
+
+            <p>
+                Overall, I am very happy with this website. It is so much better
+                than the one I made in highschool, and actually makes me{" "}
+                <i>proud</i> to have online. (sometimes I got nervous that
+                people would actually see my old website). As I stated above, I
+                am not using Next.js or Tailwind for css, but I am perfectly
+                happy with this decision. If there is one reason I might
+                consideer switching to Next, it would be for improved{" "}
+                <a href="https://nextjs.org/learn/seo" target="_blank">
+                    SEO optimization
+                </a>{" "}
+                capabilities that come with serverside rendering.
+            </p>
+
+            <p>
+                Additionally, my current method of storing all the posts within
+                the application itself seems a bit janky to me. Ideally, I setup
+                some sort of database that I can push the articles to and render
+                them on the server with Next. That, though, is a project for
+                another time.
             </p>
         </>
     );
