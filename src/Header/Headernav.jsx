@@ -45,7 +45,6 @@ export default function Headernav({ color = "white" }) {
                 style={{
                     color:
                         color == "white" ? "var(--yellow)" : "var(--darkblue)",
-                    zIndex: 2000,
                 }}
                 className="mobile"
             >

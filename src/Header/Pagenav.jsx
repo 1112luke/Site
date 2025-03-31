@@ -29,16 +29,30 @@ export default function Pagenav({ nav, color, setopen }) {
                         flexDirection: "column",
                     }}
                 >
-                    <RxCross2
-                        size="6rem"
-                        style={{
-                            position: "fixed",
-                            left: "50%",
-                            top: "15%",
-                            transform: "translate(-50%, -50%)",
-                            color: "var(--yellow)",
+                    <a
+                        onClick={() => {
+                            setopen((prevstate) => !prevstate);
                         }}
-                    ></RxCross2>
+                        style={{
+                            color:
+                                color == "white"
+                                    ? "var(--yellow)"
+                                    : "var(--darkblue)",
+                            zIndex: 2000,
+                        }}
+                        className="mobile"
+                    >
+                        <RxCross2
+                            size="6rem"
+                            style={{
+                                position: "fixed",
+                                left: "50%",
+                                top: "15%",
+                                transform: "translate(-50%, -50%)",
+                                color: "var(--yellow)",
+                            }}
+                        ></RxCross2>
+                    </a>
 
                     {nav.map((obj, index) => {
                         return (

@@ -41,7 +41,23 @@ export default function Post2() {
                     //return <img key={index} src={image}></img>;
                 })}
             </div>
-            <p>hi</p>
+            <h3>Introduction</h3>
+
+            <p>Above you see four things:</p>
+            <ul>
+                <li>An assignment tracker spreadsheet</li>
+                <li>
+                    <a href="/this-website" target="_blank">
+                        This Website
+                    </a>
+                </li>
+                <li>A snapshot of my terminal</li>
+                <li>A snapshot of my VSCode</li>
+            </ul>
+
+            <p>What do they all have in common?</p>
+
+            <h3>The cobalt blue color scheme!!!</h3>
         </>
     );
 }
