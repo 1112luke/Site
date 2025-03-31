@@ -49,20 +49,7 @@ export default function Headernav({ color = "white" }) {
                 }}
                 className="mobile"
             >
-                {menuOpen ? (
-                    <RxCross2
-                        size="6rem"
-                        style={{
-                            position: "fixed",
-                            left: "50%",
-                            top: "15%",
-                            transform: "translate(-50%, -50%)",
-                            color: "var(--yellow)",
-                        }}
-                    ></RxCross2>
-                ) : (
-                    <GiHamburgerMenu size="3rem"></GiHamburgerMenu>
-                )}
+                <GiHamburgerMenu size="3rem"></GiHamburgerMenu>
             </a>
             {menuOpen && (
                 <Pagenav
