@@ -138,6 +138,21 @@ export default function Post8() {
                 commonly known as <i>steady state error</i>.
             </p>
 
+            <aside>
+                A simple explanation of PID control:
+                <ul>
+                    <li>P: If you aren't where you want to be, go there</li>
+                    <li>
+                        I: If you haven't been where you want to be for a long
+                        time, get there quicker
+                    </li>
+                    <li>
+                        D: if you are moving quickly towards where you want to
+                        go, slow down
+                    </li>
+                </ul>
+            </aside>
+
             <p>
                 In the above simulation, the effects of Ki may be hard to
                 understand. This is due to the fact that, again, a computer
@@ -183,7 +198,7 @@ export default function Post8() {
                 By applying this output on each frame to the velocity of the
                 white ball, its position is controlled.
             </p>
-            <p>
+            <aside>
                 I would like to make a brief aside here about the process of{" "}
                 <i>tuning</i> a PID controller. By tuning, I simply mean finding
                 the values Kp, Ki, and Kd which result in optimal performance.
@@ -199,7 +214,7 @@ export default function Post8() {
                 experience with PID control, which has only been racing drones,
                 tuning is more of an art form, and optimal values are often left
                 up to personal preference!
-            </p>
+            </aside>
             <h3>Programmatic Implementation</h3>
             <p>
                 At this point, you may have some intuitive understanding of how

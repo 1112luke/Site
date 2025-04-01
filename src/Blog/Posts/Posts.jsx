@@ -47,10 +47,11 @@ const posts = [
         component: <Post2></Post2>,
     },
     {
-        id: "cobalt-blue-everything",
+        id: "cobalt-2-everything",
         public: true,
-        title: "Cobalt Blue EVERYTHING",
-        description: lorem.generateSentences(3),
+        title: "Cobalt 2 EVERYTHING",
+        description:
+            "What do this website, my terminal, my desktop, and my VS code have in common?? COBALT BLUE!",
         date: new Date("2025-03-31"),
         tags: ["blog"],
         component: <Post2></Post2>,

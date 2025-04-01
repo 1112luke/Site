@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Colorcard from "./Colorcard";
 
 export default function Post2() {
     const [images, setimages] = useState([
@@ -7,6 +8,13 @@ export default function Post2() {
         "/cbb/2.png",
         "/cbb/3.png",
         "/cbb/4.png",
+    ]);
+
+    const [colors, setcolors] = useState([
+        "#FFC600",
+        "#0E3A59",
+        "#1F4662",
+        "#162F43",
     ]);
 
     return (
@@ -52,12 +60,40 @@ export default function Post2() {
                     </a>
                 </li>
                 <li>A snapshot of my terminal</li>
-                <li>A snapshot of my VSCode</li>
+                <li>A snapshot of my VS code</li>
             </ul>
 
             <p>What do they all have in common?</p>
 
-            <h3>The cobalt blue color scheme!!!</h3>
+            <h3>The cobalt 2 color scheme!!!</h3>
+
+            <div style={{ width: "100%", display: "flex", height: "20vh" }}>
+                {colors.map((color, index) => {
+                    return (
+                        <div style={{ flex: 1 }} key={index}>
+                            <Colorcard color={color} key={index}></Colorcard>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <p>
+                I initially came across this scheme about 4 years ago when I
+                decided to change my VS code theme from the default. After
+                trying a few options, I fount Cobalt 2, and since then it has
+                been my goto theme for anything that I need to style.
+            </p>
+
+            <p>
+                I would say one of my weakest traits in general is style. I have
+                no sense for colors, so having a default for everything is
+                phenomenal. On top of this, it is satisfying when all of the
+                tools I frequently use on my computer have the same colors.
+                Everything becomes very cohesive, and my machine becomes
+                uniquely mine. Maybe someday I'll get tired of the scheme, but
+                for the time being, I plan to keep styling all my tools this
+                way.
+            </p>
         </>
     );
 }

@@ -36,6 +36,9 @@ export default function Pidemo() {
             this.yvel += this.yacc;
             this.ypos += this.yvel;
 
+            //bias
+            //this.yvel += 0.1;
+
             //call set function
             this.setfunction(this.ypos);
         }
