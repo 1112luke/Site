@@ -69,7 +69,7 @@ export default function Spinbox({ hovered }) {
                     setimage(loadedimages[0]);
                     break;
             }
-        }, 100);
+        }, 75);
     }, [hovered]);
 
     function handlePointerMove(e) {
