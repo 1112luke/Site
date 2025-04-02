@@ -4,6 +4,7 @@ import "./header.css";
 import Headernav from "./Headernav";
 import { Link } from "react-router";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import AILuke from "../Codes/AILuke/AILuke";
 
 export default function Header() {
     var hovered = useRef(false);
@@ -62,6 +63,7 @@ export default function Header() {
     return (
         <>
             <Wip></Wip>
+            <AILuke></AILuke>
             <div id="header" style={{ overflow: "visible" }}>
                 <div
                     id="headerleft"

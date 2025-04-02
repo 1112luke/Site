@@ -58,6 +58,10 @@ hr{
   color:var(--yellow)
 }
 
+#hoverpointer:hover{
+  cursor:pointer;
+}
+
 a{
   text-decoration: none;
   color:white
@@ -74,6 +78,20 @@ body{
 
 .base{
   display:none;
+}
+
+input[type=text]{
+  background-color:var(--lightblue);
+  border:none;
+  border-radius: 20px;
+  padding:10px;
+  color:var(--yellow);
+  box-shadow:0px 0px 3px black
+}
+
+input[type=text]:focus{
+  outline:none;
+  border:1px solid var(--yellow);
 }
 
 

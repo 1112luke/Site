@@ -1,0 +1,33 @@
+#nameheader{
+    flex:1;
+    background-color:var(--yellow);
+    display:flex;
+}
+
+#messagebox{
+    flex:5;
+    width:100%;
+    overflow:scroll;
+}
+
+#textarea::after{
+    content:"";
+    width:100%;
+    height: 100px;
+    position:absolute;
+    top:-101px;
+    left:0px;
+    background: linear-gradient(0deg, rgba(22,47,67,1) 14%, rgba(81,122,145,0) 100%);
+    pointer-events:none;
+}
+
+
+#textarea{
+    border-top: 1px solid var(--lightblue);
+    box-sizing:border-box;
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position: relative;
+}
