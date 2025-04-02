@@ -1,6 +1,6 @@
 import { RxCross2 } from "react-icons/rx";
 import Iconbutton from "../../Blog/Components/Iconbutton";
-import "./AILuke.css";
+import "./AIluke.css";
 import { RiSendPlane2Line } from "react-icons/ri";
 import Message from "./Message";
 import { useEffect, useRef, useState } from "react";
