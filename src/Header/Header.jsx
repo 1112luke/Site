@@ -69,7 +69,8 @@ export default function Header() {
             {chatopen ? (
                 <AILuke setopen={setchatopen}></AILuke>
             ) : (
-                <div
+                <motion.div
+                    whileHover={{ rotate: "360deg", scale: 1.1 }}
                     id="hoverpointer"
                     style={{
                         position: "fixed",
@@ -93,7 +94,7 @@ export default function Header() {
                         size="3rem"
                         style={{ color: "var(--darkblue)" }}
                     ></MdOutlineChat>
-                </div>
+                </motion.div>
             )}
             <div id="header" style={{ overflow: "visible" }}>
                 <div

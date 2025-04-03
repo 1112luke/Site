@@ -32,7 +32,7 @@ export default function AILuke({ setopen }) {
 
         textRef.current = document.getElementById("aitextbox");
 
-        var go = window.addEventListener("keydown", Handlekeypress);
+        window.addEventListener("keydown", Handlekeypress);
 
         return () => {
             window.removeEventListener("keydown", Handlekeypress);
@@ -114,7 +114,7 @@ export default function AILuke({ setopen }) {
                     position: "fixed",
                     right: "20px",
                     bottom: "40px",
-                    zIndex: 10,
+                    zIndex: 1000000000,
                     backgroundColor: "var(--darkblue)",
                     border: "2px solid var(--lightblue)",
                     borderRadius: "20px",
@@ -144,7 +144,7 @@ export default function AILuke({ setopen }) {
                             textAlign: "center",
                         }}
                     >
-                        <h3 style={{ fontSize: "1rem", textAlign: "center" }}>
+                        <h3 style={{ fontSize: "16px", textAlign: "center" }}>
                             Chat With (AI) Me
                         </h3>
                     </div>
@@ -198,7 +198,7 @@ export default function AILuke({ setopen }) {
                     <div style={{ flex: 1 }}></div>
                     <div
                         style={{
-                            flex: 1,
+                            flex: 12,
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
@@ -206,6 +206,7 @@ export default function AILuke({ setopen }) {
                     >
                         <input
                             type="text"
+                            style={{ width: "100%" }}
                             value={textbox}
                             id="aitextbox"
                             onChange={(e) => {
@@ -215,7 +216,7 @@ export default function AILuke({ setopen }) {
                     </div>
                     <div
                         style={{
-                            flex: 1,
+                            flex: 4,
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
@@ -227,7 +228,9 @@ export default function AILuke({ setopen }) {
                                 sendMessage();
                             }}
                         >
-                            <RiSendPlane2Line></RiSendPlane2Line>
+                            <RiSendPlane2Line
+                                style={{ fontSize: "16px" }}
+                            ></RiSendPlane2Line>
                         </Iconbutton>
                     </div>
                 </div>
