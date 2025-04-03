@@ -110,7 +110,7 @@ export default function AILuke({ setopen }) {
             <div
                 style={{
                     width: "300px",
-                    height: "40vh",
+                    height: "50vh",
                     position: "fixed",
                     right: "20px",
                     bottom: "40px",
@@ -206,7 +206,9 @@ export default function AILuke({ setopen }) {
                     >
                         <input
                             type="text"
-                            style={{ width: "100%" }}
+                            style={{
+                                width: "100%",
+                            }}
                             value={textbox}
                             id="aitextbox"
                             onChange={(e) => {
