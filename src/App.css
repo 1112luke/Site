@@ -3,6 +3,8 @@
   --darkblue: #162F43;
   --yellow: #FFC600;
   width:100%;
+  touch-action: pan-x pan-y;
+  height: 100% 
 }
 
 ::selection{
