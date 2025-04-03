@@ -5,11 +5,14 @@ import Headernav from "./Headernav";
 import { Link } from "react-router";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import AILuke from "../Codes/AILuke/AILuke";
+import { MdOutlineChat } from "react-icons/md";
 
 export default function Header() {
     var hovered = useRef(false);
 
     const [person, setperson] = useState("luke");
+
+    const [chatopen, setchatopen] = useState(false);
 
     const joketran = useMotionValue(-400);
     const springjoketran = useSpring(joketran);
@@ -63,7 +66,35 @@ export default function Header() {
     return (
         <>
             <Wip></Wip>
-            <AILuke></AILuke>
+            {chatopen ? (
+                <AILuke setopen={setchatopen}></AILuke>
+            ) : (
+                <div
+                    id="hoverpointer"
+                    style={{
+                        position: "fixed",
+                        width: "5rem",
+                        aspectRatio: 1,
+                        backgroundColor: "var(--yellow)",
+                        bottom: "2rem",
+                        right: "2rem",
+                        borderRadius: "100%",
+                        border: "5px solid var(--lightblue)",
+                        zIndex: 40,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                    onClick={() => {
+                        setchatopen(true);
+                    }}
+                >
+                    <MdOutlineChat
+                        size="3rem"
+                        style={{ color: "var(--darkblue)" }}
+                    ></MdOutlineChat>
+                </div>
+            )}
             <div id="header" style={{ overflow: "visible" }}>
                 <div
                     id="headerleft"

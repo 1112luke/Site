@@ -6,7 +6,7 @@ import Message from "./Message";
 import { useEffect, useRef, useState } from "react";
 import OpenAI from "openai";
 
-export default function AILuke() {
+export default function AILuke({ setopen }) {
     const [textbox, settextbox] = useState("");
     const textboxRef = useRef("");
 
@@ -161,7 +161,7 @@ export default function AILuke() {
                         <Iconbutton
                             width="50%"
                             onclick={() => {
-                                console.log("clicked");
+                                setopen(false);
                             }}
                         >
                             <RxCross2 size="2x"></RxCross2>
