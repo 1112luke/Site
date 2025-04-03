@@ -24,7 +24,7 @@ export default function Message({ content, name, date }) {
                         margin: "10px",
                         paddingBottom: "5px",
                         textAlign: "left",
-                        fontSize: "0.9rem",
+                        fontSize: "16px",
                     }}
                 >
                     {content}

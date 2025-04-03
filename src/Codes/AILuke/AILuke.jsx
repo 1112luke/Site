@@ -111,7 +111,6 @@ export default function AILuke({ setopen }) {
                 style={{
                     width: "300px",
                     height: "40vh",
-                    backgroundColor: "red",
                     position: "fixed",
                     right: "20px",
                     bottom: "40px",
@@ -166,7 +165,7 @@ export default function AILuke({ setopen }) {
                         >
                             <RxCross2
                                 style={{ zIndex: 200 }}
-                                size="2x"
+                                size="2rem"
                             ></RxCross2>
                         </Iconbutton>
                     </div>
