@@ -5,6 +5,7 @@ import Post8 from "./Post8/Post8";
 import { LoremIpsum } from "lorem-ipsum";
 import Post9 from "./Post9/Post9";
 import Post5 from "./Post5/Post5";
+import Post10 from "./Post10/Post10";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -103,6 +104,15 @@ const posts = [
         date: new Date("2025-03-20"),
         tags: ["blog", "project"],
         component: <Post9></Post9>,
+    },
+    {
+        id: "ai-luke",
+        public: true,
+        title: "I Made an AI to Respond As If It Were Me",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-3"),
+        tags: ["blog", "project"],
+        component: <Post10></Post10>,
     },
 ];
 

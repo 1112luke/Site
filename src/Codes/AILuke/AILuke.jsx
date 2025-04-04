@@ -6,8 +6,11 @@ import Message from "./Message";
 import { useEffect, useRef, useState } from "react";
 import OpenAI from "openai";
 import { lukecontent } from "./LukeContent";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { Link } from "react-router";
+import { motion } from "framer-motion";
 
-export default function AILuke({ setopen }) {
+export default function AILuke({ setopen, centered = false }) {
     const [textbox, settextbox] = useState("");
     const textboxRef = useRef("");
 
@@ -109,12 +112,12 @@ export default function AILuke({ setopen }) {
         <>
             <div
                 style={{
-                    width: "300px",
+                    width: centered ? "100%" : "300px",
                     height: "50vh",
-                    position: "fixed",
-                    right: "20px",
-                    bottom: "40px",
-                    zIndex: 1000000000,
+                    position: centered ? "relative" : "fixed",
+                    right: centered ? "0px" : "20px",
+                    bottom: centered ? "0px" : "40px",
+                    zIndex: centered ? 10000000 : 1000000000,
                     backgroundColor: "var(--darkblue)",
                     border: "2px solid var(--lightblue)",
                     borderRadius: "20px",
@@ -142,9 +145,15 @@ export default function AILuke({ setopen }) {
                             justifyContent: "center",
                             alignItems: "center",
                             textAlign: "center",
+                            flexDirection: "column",
                         }}
                     >
-                        <h3 style={{ fontSize: "16px", textAlign: "center" }}>
+                        <h3
+                            style={{
+                                fontSize: "16px",
+                                textAlign: "center",
+                            }}
+                        >
                             Chat With (AI) Me
                         </h3>
                     </div>
@@ -157,17 +166,19 @@ export default function AILuke({ setopen }) {
                             height: "100%",
                         }}
                     >
-                        <Iconbutton
-                            width="50%"
-                            onclick={() => {
-                                setopen(false);
-                            }}
-                        >
-                            <RxCross2
-                                style={{ zIndex: 200 }}
-                                size="2rem"
-                            ></RxCross2>
-                        </Iconbutton>
+                        {!centered && (
+                            <Iconbutton
+                                width="32px"
+                                onclick={() => {
+                                    setopen(false);
+                                }}
+                            >
+                                <RxCross2
+                                    style={{ zIndex: 200 }}
+                                    size="2rem"
+                                ></RxCross2>
+                            </Iconbutton>
+                        )}
                     </div>
                 </div>
 
@@ -225,7 +236,7 @@ export default function AILuke({ setopen }) {
                         }}
                     >
                         <Iconbutton
-                            width="50%"
+                            width="35px"
                             onclick={() => {
                                 sendMessage();
                             }}
@@ -235,6 +246,26 @@ export default function AILuke({ setopen }) {
                             ></RiSendPlane2Line>
                         </Iconbutton>
                     </div>
+                    {!centered && (
+                        <Link to="/ai-luke">
+                            <motion.div
+                                whileHover={{ color: "var(--yellow)" }}
+                                style={{
+                                    position: "absolute",
+                                    textAlign: "center",
+                                    left: "50%",
+                                    transform: "translate(-50%)",
+                                    fontSize: "12px",
+                                    color: "var(--lightblue)",
+                                    top: "-16px",
+                                    zIndex: 200,
+                                }}
+                            >
+                                How did I make this?{" "}
+                                <FaExternalLinkAlt size="10px"></FaExternalLinkAlt>
+                            </motion.div>
+                        </Link>
+                    )}
                 </div>
             </div>
         </>

@@ -8,6 +8,7 @@
     flex:7;
     width:100%;
     overflow:scroll;
+    position:relative;
 }
 
 #textarea::after{
