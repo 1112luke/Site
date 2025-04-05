@@ -256,7 +256,7 @@ export default function AILuke({ setopen, centered = false }) {
                                     transform: "translate(-50%)",
                                     fontSize: "12px",
                                     color: "var(--lightblue)",
-                                    top: "-16px",
+                                    top: "-17px",
                                     zIndex: 200,
                                 }}
                             >
