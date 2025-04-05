@@ -49,10 +49,10 @@ const posts = [
     },
     {
         id: "cobalt-2-everything",
-        public: true,
+        public: false,
         title: "Cobalt 2 EVERYTHING",
         description:
-            "What do this website, my terminal, my desktop, and my VS code have in common?? COBALT BLUE!",
+            "What do this website, my terminal, my desktop, and my VS code have in common?? COBALT 2!",
         date: new Date("2025-03-31"),
         tags: ["blog"],
         component: <Post2></Post2>,
