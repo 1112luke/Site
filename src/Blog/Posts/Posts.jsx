@@ -109,7 +109,8 @@ const posts = [
         id: "ai-luke",
         public: true,
         title: "I Made an AI Chatbot That Responds As If It Were Me",
-        description: lorem.generateSentences(3),
+        description:
+            "The widget that you can access in the bottom right corner of every page of my website is an AI chatbot just like any other, except I have created the AI so that it responds as if it were me.",
         date: new Date("2025-04-3"),
         tags: ["blog", "project"],
         component: <Post10></Post10>,
