@@ -108,7 +108,7 @@ const posts = [
     {
         id: "ai-luke",
         public: true,
-        title: "I Made an AI to Respond As If It Were Me",
+        title: "I Made an AI Chatbot That Responds As If It Were Me",
         description: lorem.generateSentences(3),
         date: new Date("2025-04-3"),
         tags: ["blog", "project"],

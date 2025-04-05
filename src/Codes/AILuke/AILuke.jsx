@@ -117,7 +117,7 @@ export default function AILuke({ setopen, centered = false }) {
                     position: centered ? "relative" : "fixed",
                     right: centered ? "0px" : "20px",
                     bottom: centered ? "0px" : "40px",
-                    zIndex: centered ? 10000000 : 1000000000,
+                    zIndex: centered ? 1 : 1000000000,
                     backgroundColor: "var(--darkblue)",
                     border: "2px solid var(--lightblue)",
                     borderRadius: "20px",
@@ -199,7 +199,6 @@ export default function AILuke({ setopen, centered = false }) {
                     <div
                         style={{
                             width: "100%",
-
                             height: "70px",
                         }}
                     ></div>
