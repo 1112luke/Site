@@ -1,16 +1,18 @@
 import "./App.css";
 import { createRoot } from "react-dom/client";
 import Header from "./Header/Header";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import Homepege from "./Homepage/Homepage";
 import Blog from "./Blog/Blog";
 import Post from "./Blog/Post";
 import Pidemo from "./Codes/PID/Pidemo";
 
 //google analytics
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
 import Lynley from "./Codes/Lynley/Lynley";
 import Nopath from "./Blog/Components/Nopath";
+import { useEffect } from "react";
+import GAListener from "./GAListener";
 //import Wasm from "./Codes/Wasm/Wasm";
 const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -19,6 +21,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
+                <GAListener></GAListener>
                 <Routes>
                     <Route path="/" element={<Homepege></Homepege>}></Route>
                     <Route path="/all-posts" element={<Blog></Blog>}></Route>

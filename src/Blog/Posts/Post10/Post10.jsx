@@ -317,8 +317,8 @@ setmessages((m) => [
             <h3>Moving Forward</h3>
 
             <p>
-                AI is definitely a huge interet of mine. While I say I "made" an
-                AI chatbot, I didn't actually make anything about the AI. In
+                AI is definitely a huge interest of mine. While I say I "made"
+                an AI chatbot, I didn't actually make anything about the AI. In
                 this project, the AI is kinda just a black box that I use and
                 trust that works. In the future, I hope to learn more about how
                 these neural networks acually work and implement them for my own
