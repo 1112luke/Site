@@ -128,6 +128,7 @@ export default function Spinbox({ hovered }) {
                     width: "100%",
                 }}
                 camera={{ zoom: 5, position: [0, 0, 20] }}
+                dpr={window.devicePixelRatio}
             >
                 <ambientLight />
                 <pointLight position={[10, 10, 10]} />
@@ -152,10 +153,11 @@ export default function Spinbox({ hovered }) {
                         <meshStandardMaterial wireframe color="yellow" />
                     </mesh>
                     <Html
-                        scale={0.6}
+                        scale={0.2}
                         style={{
-                            width: "200px",
-                            height: "200px",
+                            width: "600px",
+                            height: "600px",
+                            imageRendering: "auto",
                             zIndex: "5",
                         }}
                         position={[0, 0, 1.52]}
@@ -164,10 +166,10 @@ export default function Spinbox({ hovered }) {
                     >
                         {!spinning && image && (
                             <img
-                                width="200px"
+                                width="600px"
+                                height="600px"
                                 draggable={false}
                                 src={image}
-                                style={{ aspectRatio: 1 / 1 }}
                             ></img>
                         )}
                     </Html>

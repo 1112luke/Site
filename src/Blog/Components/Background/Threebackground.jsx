@@ -32,9 +32,6 @@ const ThreeBackground = ({ abs = false }) => {
 
     return (
         <Canvas
-            gl={{
-                pixelRatio: 20,
-            }}
             style={{
                 position: abs ? "absolute" : "fixed",
                 top: 0,
@@ -43,6 +40,7 @@ const ThreeBackground = ({ abs = false }) => {
                 height: abs ? "100%" : "100vh",
                 zIndex: -1,
             }}
+            dpr={[1, 2]}
         >
             <ambientLight intensity={1} />
             <pointLight position={[10, 10, 10]} />
