@@ -1,12 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Game } from "./asteroids";
+import Gameel from "./Gameel";
 
 export default function Aisteroids() {
-    var games = useRef([]);
+    var [games, setgames] = useState([new Game()]);
 
     useEffect(() => {
-        games.current.push(new Game());
-        console.log("HELLO", games);
+        //run at 30fps
+        setInterval(animate, 1000 / 60);
     }, []);
+
+    function animate() {
+        games.forEach((game) => {
+            game.frame(1000 / 60 / 100);
+        });
+
+        setgames([...games]);
+    }
 
     return (
         <>
@@ -18,14 +28,16 @@ export default function Aisteroids() {
                     width: "100%",
                     height: "100%",
                     backgroundColor: "black",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
                 }}
-            ></div>
-            {games.current.forEach((index, game) => {
-                <div style={{ flex: "1", color: "white" }}>Hello</div>;
-            })}
+            >
+                {games.map((game, index) => {
+                    return (
+                        <>
+                            <Gameel game={game} key={index}></Gameel>
+                        </>
+                    );
+                })}
+            </div>
         </>
     );
 }
