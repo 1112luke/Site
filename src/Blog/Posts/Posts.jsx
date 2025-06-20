@@ -6,6 +6,10 @@ import { LoremIpsum } from "lorem-ipsum";
 import Post9 from "./Post9/Post9";
 import Post5 from "./Post5/Post5";
 import Post10 from "./Post10/Post10";
+import Post11 from "./Post11/Post11";
+import Post12 from "./Post12/Post12";
+import Post13 from "./Post13/Post13";
+import Post14 from "./Post14/Post14";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -114,6 +118,69 @@ const posts = [
         date: new Date("2025-04-04"),
         tags: ["blog", "project"],
         component: <Post10></Post10>,
+    },
+    {
+        id: "arduino-free",
+        public: false,
+        title: "I Broke Free From Arduino and You Can Too",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post11></Post11>,
+    },
+    {
+        id: "pocket-stop",
+        public: false,
+        title: "Pocket Stop",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post12></Post12>,
+    },
+    {
+        id: "balance-bro",
+        public: false,
+        title: "Tiny Self Balancing Robot",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post13></Post13>,
+    },
+    {
+        id: "ai-asteroids",
+        public: false,
+        title: "Machine learning asteroids",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post13></Post13>,
+    },
+    {
+        id: "ai-bass",
+        public: false,
+        title: "AI bigmouth billy bass",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post13></Post13>,
+    },
+    {
+        id: "ai-slither.io",
+        public: false,
+        title: "ai-slither.io bot",
+        description: lorem.generateSentences(3),
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post13></Post13>,
+    },
+    {
+        id: "wireless-ti-84",
+        public: true,
+        title: "I Added Wireless Charging To My TI-84",
+        description: "Inifinite Utility. Infinite Style.",
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post14></Post14>,
     },
 ];
 

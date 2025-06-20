@@ -13,6 +13,7 @@ import Lynley from "./Codes/Lynley/Lynley";
 import Nopath from "./Blog/Components/Nopath";
 import { useEffect } from "react";
 import GAListener from "./GAListener";
+import Aisteroids from "./Codes/Aisteroids/Aisteroids";
 //import Wasm from "./Codes/Wasm/Wasm";
 const TRACKING_ID = "G-5B6SM3E66B"; // OUR_TRACKING_ID
 ReactGA.initialize(TRACKING_ID);
@@ -37,6 +38,10 @@ function App() {
                     <Route
                         path="/codes/lynley"
                         element={<Lynley></Lynley>}
+                    ></Route>
+                    <Route
+                        path="/codes/aisteroids"
+                        element={<Aisteroids></Aisteroids>}
                     ></Route>
                     {/*
                     <Route path="/codes/Wasm" element={<Wasm></Wasm>}></Route>
