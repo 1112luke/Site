@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { motion } from "motion/react";
+import { motion, useSpring } from "motion/react";
 import "./Card.css";
 
 export default function Card({
@@ -10,7 +10,10 @@ export default function Card({
     tags,
     blank = false,
     index,
+    image,
 }) {
+    const textpos = useSpring("120%");
+
     return (
         <>
             <Link to={blank ? "#" : `/${id}`}>
@@ -22,11 +25,49 @@ export default function Card({
                         scale: 1.01,
                         rotate: index % 2 ? 0.5 : -0.5,
                     }}
+                    onMouseEnter={() => {
+                        textpos.set("20%");
+                    }}
+                    onMouseLeave={() => {
+                        textpos.set("120%");
+                    }}
                     transition={{ type: "tween", duration: 0.2 }}
                 >
-                    <h2>{title}</h2>
-                    <h4>{date}</h4>
-                    <p style={{ fontSize: "1.9rem" }}>{description}</p>
+                    <div style={{ paddingLeft: "7px" }}>
+                        <h2>{title}</h2>
+                        <h4>{date}</h4>
+                    </div>
+
+                    <motion.div
+                        style={{
+                            position: "absolute",
+                            top: textpos,
+                            backgroundColor: "#325671",
+                            paddingBottom: "1000px",
+                            borderTop: "2px solid var(--yellow)",
+                            zIndex: 1,
+                        }}
+                    >
+                        <p
+                            style={{
+                                fontSize: "1.9rem",
+                                paddingTop: "10px",
+                                marginTop: "0px",
+                            }}
+                        >
+                            {description}
+                        </p>
+                    </motion.div>
+
+                    <img
+                        src={image}
+                        style={{
+                            marginTop: "50%",
+                            position: "relative",
+                            transform: "translateY(-65%)",
+                            zIndex: 0,
+                        }}
+                    ></img>
                     <div id="tagbox">
                         {tags.map((tag, index) => {
                             return (

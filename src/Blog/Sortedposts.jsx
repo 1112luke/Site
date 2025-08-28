@@ -39,21 +39,26 @@ export default function Sortedposts({ sort }) {
 
     return (
         <>
-            {hereposts.map((post, index) =>
-                post.public ? (
-                    <div key={post.id}>
-                        <Card
-                            title={post.title}
-                            id={post.id}
-                            date={dateToWords(post.date)}
-                            description={post.description}
-                            tags={post.tags}
-                            index={index}
-                        />
-                        <br />
-                    </div>
-                ) : null
-            )}
+            {/*Grid Wrapper*/}
+            <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+                {hereposts.map((post, index) =>
+                    post.public ? (
+                        <div key={post.id}>
+                            <div style={{ padding: "10px" }}>
+                                <Card
+                                    title={post.title}
+                                    id={post.id}
+                                    date={dateToWords(post.date)}
+                                    description={post.description}
+                                    tags={post.tags}
+                                    index={index}
+                                    image={post.image}
+                                />
+                            </div>
+                        </div>
+                    ) : null
+                )}
+            </div>
         </>
     );
 }

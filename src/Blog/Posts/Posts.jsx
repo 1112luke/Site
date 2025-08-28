@@ -10,6 +10,7 @@ import Post11 from "./Post11/Post11";
 import Post12 from "./Post12/Post12";
 import Post13 from "./Post13/Post13";
 import Post14 from "./Post14/Post14";
+import Post15 from "./Post15/Post15";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -31,6 +32,7 @@ const posts = [
             "Docker is one of the most prevalent tools in tech, yet up to this point I never understood it. This is the story of how that changed.",
         date: new Date("2025-02-23"),
         tags: ["blog"],
+        image: "https://docs.deepwavedigital.com/Tutorials/img/docker_logo.png",
         component: <Post1></Post1>,
     },
     {
@@ -69,6 +71,7 @@ const posts = [
             "This website has been in the works for almost a year, yet I built this version it up to this point in less than a month... Let me explain.",
         date: new Date("2025-03-21"),
         tags: ["blog", "project"],
+        image: "/this-website/this-website.png",
         component: <Post5></Post5>,
     },
     {
@@ -97,6 +100,7 @@ const posts = [
             "The article I wish I came across when I was learning PID controls. I present an interactive demo, mathematical analysis, and programmatic implementation.",
         date: new Date("2025-03-17"),
         tags: ["blog", "project"],
+        image: "/pid/pid.png",
         component: <Post8></Post8>,
     },
     {
@@ -107,6 +111,7 @@ const posts = [
             "My junior year of high school, we were assigned a final project in AP Calc AB and one of our options was to make a music video. This does seem a bit odd, doesnt it? A music video? For calculus?",
         date: new Date("2025-03-20"),
         tags: ["blog", "project"],
+        image: "/calc/calc.png",
         component: <Post9></Post9>,
     },
     {
@@ -117,6 +122,7 @@ const posts = [
             "The widget that you can access in the bottom right corner of every page of my website is an AI chatbot just like any other, except I have created the AI so that it responds as if it were me.",
         date: new Date("2025-04-04"),
         tags: ["blog", "project"],
+        image: "/ai-luke/ai-luke.png",
         component: <Post10></Post10>,
     },
     {
@@ -180,7 +186,18 @@ const posts = [
         description: "Inifinite Utility. Infinite Style.",
         date: new Date("2025-04-14"),
         tags: ["blog", "project"],
+        image: "/ti84/DSC_0069.JPG",
         component: <Post14></Post14>,
+    },
+    {
+        id: "homelab",
+        public: false,
+        title: "My Crippling Homelab Addiction",
+        description:
+            "Creating a homelab literally took over my life, but at least I learned a thing or two along the way'",
+        date: new Date("2025-04-14"),
+        tags: ["blog", "project"],
+        component: <Post15></Post15>,
     },
 ];
 
