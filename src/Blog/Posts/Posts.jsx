@@ -183,7 +183,7 @@ const posts = [
         id: "wireless-ti-84",
         public: true,
         title: "I Added Wireless Charging To My TI-84",
-        description: "Inifinite Utility. Infinite Style.",
+        description: "For when you've lost your pesky usb-mini cable.",
         date: new Date("2025-04-14"),
         tags: ["blog", "project"],
         image: "/ti84/DSC_0069.JPG",
@@ -191,12 +191,13 @@ const posts = [
     },
     {
         id: "homelab",
-        public: false,
+        public: true,
         title: "My Crippling Homelab Addiction",
         description:
-            "Creating a homelab literally took over my life, but at least I learned a thing or two along the way'",
-        date: new Date("2025-04-14"),
+            "Creating a homelab literally took over my life, but at least I learned a thing or two along the way",
+        date: new Date("2025-08-28"),
         tags: ["blog", "project"],
+        image: "/homelab/dashboard.png",
         component: <Post15></Post15>,
     },
 ];
