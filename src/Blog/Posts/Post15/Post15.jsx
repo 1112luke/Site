@@ -198,10 +198,268 @@ export default function Post15() {
                         Plex is awesome. It is a service that allows any media
                         stored on the drive of my home server to be streamed
                         anywhere in the world, and presents a very polished user
-                        interface for mobile, web, and smart TV devices.
+                        interface for mobile, web, and smart TV devices. I
+                        simply load movies onto my server, and they are
+                        available instantly for all of my friends and family who
+                        use the service.
                     </p>
                 </li>
+                <li>
+                    <h3>Jellyfin</h3>
+                    <p>
+                        Jellyfin is an open source alternative to Plex. Many
+                        prefer it over Plex for its increased level of
+                        customization and lightweight interface. While I do
+                        prefer this as well, I stick with Plex for sharing
+                        content with family and friends for its ease of use.
+                    </p>
+                </li>
+                <li>
+                    <h3>Homarr</h3>
+                    <p>
+                        Homarr is the interface that you see in the title image
+                        of this post. It allows me to quickly view which of my
+                        services are running, as well as system stats such as
+                        CPU Usage, Storage space, memory utilizaiton, and
+                        network utilizaiton via the{" "}
+                        <Link to="https://getdashdot.com/" target="_blank">
+                            Dash.
+                        </Link>{" "}
+                        service, which I also host on the server.
+                    </p>
+                </li>
+                <li>
+                    <h3>Nginx Reverse Proxy Manager</h3>
+                    <p>
+                        To access services remotely, a reverse proxy is
+                        necessary to map incoming DNS requests to the correct
+                        internal machine and port. If I want, say,
+                        dashboard.lukescholler.com to map to my homarr instance,
+                        I need to setup a reverse proxy to map that incoming
+                        request to the machine and port (192.168.0.33:7575)
+                    </p>
+                    <br></br>
+                    <aside>
+                        The above assumes that a CNAME record has been created
+                        for the subdomain, pointing it to my public IP address
+                        or, in my case, the dynamic DNS setup on my router.
+                    </aside>
+                </li>
             </ul>
+
+            <p>
+                The above are by no means all the services I run, but are a good
+                overview of the types of things I am doing with my server.
+                Containers I want to run in the future include NextCloud and
+                PiHole, for storage and ad blocking, respectively.
+            </p>
+            <p>
+                <b>Orchestration with Docker Compose</b>
+            </p>
+            <p>
+                All of my media containers are spawned and managed via Docker
+                Compose using the following compose.yaml file:
+            </p>
+
+            <SyntaxHighlighter
+                id="syntax"
+                language="yaml"
+                style={monoBlue}
+            >{`services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - VERSION=docker
+      - PLEX_CLAIM= #optional
+    volumes:
+      - /appdata/plex:/config
+      - /vault/data:/data
+    restart: unless-stopped
+
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /appdata/tautulli:/config
+    ports:
+      - 8181:8181
+    restart: unless-stopped
+
+  jellyseerr:
+       image: fallenbagel/jellyseerr:latest
+       container_name: jellyseerr
+       environment:
+            - LOG_LEVEL=debug
+            - TZ=Etc/UTC
+       ports:
+            - 5055:5055
+       volumes:
+            - /appdata/jellyseer:/app/config
+       restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /appdata/radarr:/config
+      - /vault/data:/data
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /appdata/sonarr:/config
+      - /vault/data:/data
+
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  flaresolverr:
+    # DockerHub mirror flaresolverr/flaresolverr:latest
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=\${LOG_LEVEL:-info}
+      - LOG_HTML=\${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=\${CAPTCHA_SOLVER:-none}
+      - TZ=Etc/UTC
+    ports:
+      - "\${PORT:-8191}:8191"
+    restart: unless-stopped 
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /appdata/prowlarr:/config
+      - /vault/data:/data
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
+    volumes:
+      - /appdata/qbittorrent:/config
+      - /vault/data:/data
+    ports:
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
+    restart: unless-stopped
+
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    restart: unless-stopped
+    ports:
+      - "11011:11011"
+    volumes:
+      - /appdata/cleanuparr:/config
+    environment:
+      - PORT=11011
+      - BASE_PATH=
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+      - TZ=Etc/UTC
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - JELLYFIN_PublishedServerUrl=http://192.168.0.5 #optional
+    volumes:
+      - /appdata/jellyfin:/config
+      - /vault/data:/data
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+
+  tdarr:
+    container_name: tdarr
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+    environment:
+      - TZ=Europe/London
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - serverIP=0.0.0.0
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=7
+      - nodeName=MyInternalNode
+      - auth=false
+      - openBrowser=true
+      - maxLogSizeMB=10
+      - cronPluginUpdate=
+    volumes:
+      - /appdata/tdarr/server:/app/server
+      - /appdata/tdarr/configs:/app/configs
+      - /appdata/tdarr/logs:/app/logs
+      - /vault/data/media:/media
+      - /vault/transcode_cache:/temp
+
+    `}</SyntaxHighlighter>
+
+            <p>
+                For each service, an addition is made to this file listing
+                common things like the source of the docker container, ports to
+                forward through to the container, and volumes to map persistent
+                data through to the container. Much of this information is
+                provided by the maker of the docker file, making this setup as
+                simple as changing a few lines to add any new service.
+            </p>
+            <aside>
+                I do not run docker compose directly, but rather manage it
+                through portainer on what is called "stacks." This is simply for
+                convenience sake, but it works the same either way!
+            </aside>
         </>
     );
 }
