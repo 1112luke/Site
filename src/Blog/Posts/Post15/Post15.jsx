@@ -246,7 +246,6 @@ export default function Post15() {
                     </aside>
                 </li>
             </ul>
-
             <p>
                 The above are by no means all the services I run, but are a good
                 overview of the types of things I am doing with my server.
@@ -260,7 +259,6 @@ export default function Post15() {
                 All of my media containers are spawned and managed via Docker
                 Compose using the following compose.yaml file:
             </p>
-
             <SyntaxHighlighter
                 id="syntax"
                 language="yaml"
@@ -446,7 +444,6 @@ export default function Post15() {
       - /vault/transcode_cache:/temp
 
     `}</SyntaxHighlighter>
-
             <p>
                 For each service, an addition is made to this file listing
                 common things like the source of the docker container, ports to
@@ -460,6 +457,15 @@ export default function Post15() {
                 through portainer on what is called "stacks." This is simply for
                 convenience sake, but it works the same either way!
             </aside>
+            <h3>Conclusion</h3>
+            <p>
+                I am by no means done with this project, and there are so many
+                more things I hope to explore. For now, though, I feel I have
+                properly tackled the initial challenge. This project taught me
+                an incredible amount about networking and deployment of
+                server-side code, and I'm excited to continue experiementing
+                with different hardware, software, and network infrastructure.
+            </p>
         </>
     );
 }
