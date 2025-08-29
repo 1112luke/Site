@@ -1,0 +1,17 @@
+
+#gridwrapper{
+    display: grid;
+}
+
+/*for conditional rendering*/
+@media (min-width:720px){
+    #gridwrapper{
+        grid-template-columns: 50% 50%;
+    }
+}
+  
+  @media (max-width:720px){
+    #gridwrapper{
+        grid-template-columns: 100%;
+    }
+}

@@ -1,6 +1,7 @@
 import posts from "./Posts/Posts";
 import Card from "./Card";
 import { useEffect, useState } from "react";
+import "./Sortedposts.css";
 
 export default function Sortedposts({ sort }) {
     const [sortby, setsortby] = useState("all");
@@ -40,7 +41,7 @@ export default function Sortedposts({ sort }) {
     return (
         <>
             {/*Grid Wrapper*/}
-            <div style={{ display: "grid", gridTemplateColumns: "50% 50%" }}>
+            <div id="gridwrapper">
                 {hereposts.map((post, index) =>
                     post.public ? (
                         <div key={post.id}>
