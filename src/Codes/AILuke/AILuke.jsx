@@ -29,7 +29,7 @@ export default function AILuke({ setopen, centered = false }) {
     useEffect(() => {
         //load ai
         openai.current = new OpenAI({
-            apiKey: "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",
+            apiKey: import.meta.env.VITE_GPT_KEY,
             dangerouslyAllowBrowser: true, // Required if running in a browser environment
         });
 
