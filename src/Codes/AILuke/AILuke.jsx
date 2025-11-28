@@ -29,7 +29,8 @@ export default function AILuke({ setopen, centered = false }) {
     useEffect(() => {
         //load ai
         openai.current = new OpenAI({
-            apiKey: import.meta.env.VITE_GPT_KEY,
+            //apiKey: import.meta.env.VITE_GPT_KEY,
+            apiKey: "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",
             dangerouslyAllowBrowser: true, // Required if running in a browser environment
         });
 
