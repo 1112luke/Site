@@ -11,6 +11,7 @@ import Post12 from "./Post12/Post12";
 import Post13 from "./Post13/Post13";
 import Post14 from "./Post14/Post14";
 import Post15 from "./Post15/Post15";
+import Post16 from "./Post16/Post16";
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -199,6 +200,17 @@ const posts = [
         tags: ["blog", "project"],
         image: "/homelab/dashboard.png",
         component: <Post15></Post15>,
+    },
+    {
+        id: "alpha-peripheral-board",
+        public: true,
+        title: "The Alpha Peripheral Board",
+        description:
+            "Design & development of the electronics for Notre Dame's first liquid fueled rocket engine.",
+        date: new Date("2025-08-28"),
+        tags: ["blog", "project"],
+        image: "/homelab/dashboard.png",
+        component: <Post16></Post16>,
     },
 ];
 
