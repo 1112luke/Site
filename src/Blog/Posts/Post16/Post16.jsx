@@ -8,13 +8,14 @@ import {
     monoBlue,
     solarizedDark,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Diagram from "./Diagram";
 
 export default function Post16() {
     return (
         <>
             <img
                 style={{ width: "80%" }}
-                src="https://docs.deepwavedigital.com/Tutorials/img/docker_logo.png"
+                src="/alpha-peripheral-board/Board.png"
             ></img>
             <h3>Introduction</h3>
             <p>
@@ -155,6 +156,9 @@ export default function Post16() {
                     Monitoring of the engine's vibration through the duraiton of
                     the burn
                 </li>
+                <li style={{ fontWeight: "200" }}>
+                    Precise actuation of 4 solenoid valves
+                </li>
                 <li style={{ fontWeight: "200" }}>Ignition of the engine</li>
                 <li style={{ fontWeight: "200" }}>
                     Managing a multi-layer safety system
@@ -190,8 +194,31 @@ export default function Post16() {
                 The finished board has the following features, in accordance
                 with the project requirements:
             </p>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: "300" }}>
+                Data Collection
+            </h3>
             <ul>
-                <li></li>
+                <li>12x 0-5v ADC (used for pressure sensing)</li>
+                <li>4x Thermocouple Channels</li>
+                <li>1x I2C plug interface for IMU</li>
+                <li>1x Load Cell Interface</li>
+            </ul>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: "300" }}>
+                Communication
+            </h3>
+            <ul>
+                <li>1x RS-485 Channel (For Communication With F.E.R.B)</li>
+                <li>1x Serial USB Port</li>
+            </ul>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: "300" }}>Actuation</h3>
+            <ul>
+                <li>4x Solenoid Valve Channels</li>
+                <li>1x Pyro Channel</li>
+            </ul>
+            <h3 style={{ fontSize: "1.5rem", fontWeight: "300" }}>Failsafe</h3>
+            <ul>
+                <li>2x Keyed Switches (pyro, solenoids)</li>
+                <li>1x E-Stop</li>
             </ul>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Design Considerations
@@ -224,9 +251,21 @@ export default function Post16() {
                 and readable as possible, with extensive comments to make it as
                 digestible as possible for newcomers.
             </p>
+            <p>
+                Most of the complexity of this design comes because this board
+                isnt meant to be a one-off solution for this particular engine,
+                but rather a long-term investment for NDXP for years to come.
+                Although this board didnt need to be flight-ready to serve its
+                immediate purpose, it was designed to be flight-ready
+                regardless. Examples of future-proof provisions include having
+                more pressure sensing channels than needed for the Alpha engine
+                and including RS-485 communication capability for connection to
+                a vehicle flight computer.
+            </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 System Architecture
             </h4>
+            <Diagram></Diagram>
             <h3 style={{ textAlign: "center" }}>Hardware</h3>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Component Selection

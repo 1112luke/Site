@@ -203,13 +203,13 @@ const posts = [
     },
     {
         id: "alpha-peripheral-board",
-        public: false,
+        public: true,
         title: "The Alpha Peripheral Board",
         description:
             "Design & development of the electronics for Notre Dame's first liquid fueled rocket engine.",
         date: new Date("2025-08-28"),
         tags: ["blog", "project"],
-        image: "/homelab/dashboard.png",
+        image: "/alpha-peripheral-board/Board.png",
         component: <Post16></Post16>,
     },
 ];
