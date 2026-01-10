@@ -196,6 +196,34 @@ export default function Post16() {
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Design Considerations
             </h4>
+            <p>
+                When designing the project, there were a few themes that emerged
+                in our design decisions that greatly shaped the form of the
+                final project: modularity, transparency, and future proofing.
+            </p>
+            <p>
+                Of all these design patterns, modularity definitely had the
+                largest impact on our decisions. It showed itself not only in
+                our hardware design -- provisioning for multiple boards and
+                detatcheable components -- but also in our software where
+                breaking problems down into their smallest subcomponents is of
+                utmost importance.
+            </p>
+            <p>
+                By transparency, I mean the ease at which the project could be
+                picked up by a third party who has never seen it before and
+                begin making their own contributions. For many projects this
+                isn't a very large factor -- especially for a prototype. For our
+                specific case, though, it is very important that future NDRT
+                members are able to carry on the project we have started. To
+                enable this, we have made sure to save and document all of our
+                work on our github. Additionally, we have created a technical
+                writeup detailing every aspect of this project for any potential
+                individuals who might pick it up in the future. Our software
+                specifically has been written at every point to be as modular
+                and readable as possible, with extensive comments to make it as
+                digestible as possible for newcomers.
+            </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 System Architecture
             </h4>

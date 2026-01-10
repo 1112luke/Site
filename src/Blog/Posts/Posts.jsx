@@ -203,7 +203,7 @@ const posts = [
     },
     {
         id: "alpha-peripheral-board",
-        public: true,
+        public: false,
         title: "The Alpha Peripheral Board",
         description:
             "Design & development of the electronics for Notre Dame's first liquid fueled rocket engine.",
