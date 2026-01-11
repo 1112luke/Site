@@ -93,6 +93,7 @@ export default function Post16() {
                                     <li>Development Environment</li>
                                     <li>Firmware Architecture</li>
                                     <li>Efficient Serial Communications</li>
+                                    <li>Finite State Machine</li>
                                 </ul>
                             </li>
                             <li>
@@ -266,16 +267,95 @@ export default function Post16() {
                 System Architecture
             </h4>
             <Diagram></Diagram>
+            <p>
+                As the Alpha Board is inherintly microcontroller based, serial
+                communication is simplest, most fool-proof method for
+                communication from the board. USB serial communication however,
+                is not ideal for long distance, robust, high speed
+                communication. While there are high signal integrity, high speed
+                protocols such as{" "}
+                <Link to="https://en.wikipedia.org/wiki/RS-485" target="_blank">
+                    RS-485
+                </Link>{" "}
+                that would work directly for long-distance communication, we
+                decided to go with a Raspberry Pi for immediately translating
+                the serial signal into a websocket communication to be
+                transported via ethernet.
+            </p>
+            <p>
+                This decision was made for multiple reasons. First, in
+                accordance with modular design principles, we didn't want to
+                incorporate features specific to our first ground test onto this
+                board that is inherently designed to be a piece of a larger
+                system. Because we also need data logging of the entire fire
+                event, the Raspberry Pi is needed to log all data passing
+                through it to its onboard SD card. Its close physical proximity
+                to the Alpha Board is important in facilitating this reliable
+                data logging.
+            </p>
+            <p>
+                As for communication over ethernet, multiple options existed:
+                TCP/IP Sockets directly, websockets, or HTTP based
+                communication. The easiest of these to rule out was TCP/IP
+                sockets, as there is little support for these sockets directly
+                in most web technology. Both HTTP communication or websockets
+                would word fine for communication to our web app, and a
+                websocket connection was ultimately chosen for its simplicity,
+                reliablity, and ability to make long-lasting client-server
+                connections rather relying on the slower call/response model of
+                HTTP.
+            </p>
             <h3 style={{ textAlign: "center" }}>Hardware</h3>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Component Selection
             </h4>
+            <p>
+                The most important component we selected, by far, is the
+                microcontroller. Specifically the microcontroller family. In a
+                world where Microchip, ESP, STMicroelectronics, TI, PIC, and
+                many other microcontroller families exist, we had many options.
+                In the end, we went with the STM32 platform for its widespread
+                reputation in industry and CUBEMX configuration program. For
+                most other ICs, the largest factors we considered were first
+                availability of good C libraries and second market availability.
+                For some ICs, specific specifications had to be met, whether it
+                be speed or resolution, but for the most part component
+                selection was very straightforward.
+            </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 I/O Consideration
             </h4>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 PCB Design
             </h4>
+            <img
+                style={{ width: "50%" }}
+                src="/alpha-peripheral-board/filledpcb.png"
+            ></img>
+            <img
+                style={{ width: "50%" }}
+                src="/alpha-peripheral-board/unfilledpcb.png"
+            ></img>
+            Filled and unfilled PCB layouts
+            <p>
+                For me, the most fun part of this projects is usually PCB
+                design. I love the challenge of positioning the components
+                compactly and routing the traces efficiently while still
+                maintaining signal integrity and following most{" "}
+                <Link
+                    to="https://www.protoexpress.com/blog/best-high-speed-pcb-routing-practices/"
+                    target="_blank"
+                >
+                    PCB design best practices
+                </Link>
+                .
+            </p>
+            <p>
+                The board consists of four layers which from top to bottom are:
+                signal, power, ground, signal. While we have no extremely high
+                speed signals, care was still taken to maintain signal integrity
+                especially on our SPI busses and USB routes.
+            </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 PCB Assembly
             </h4>
@@ -300,6 +380,9 @@ export default function Post16() {
             </h4>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Efficient Serial Communications
+            </h4>
+            <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
+                Finite State Machine
             </h4>
             <h3 style={{ fontSize: "1.8rem" }}>Raspberry Pi</h3>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>Overview</h4>
