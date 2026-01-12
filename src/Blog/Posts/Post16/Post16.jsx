@@ -9,6 +9,7 @@ import {
     solarizedDark,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import Diagram from "./Diagram";
+import Packet from "./Packet";
 
 export default function Post16() {
     return (
@@ -381,6 +382,268 @@ export default function Post16() {
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Efficient Serial Communications
             </h4>
+            <p>
+                One of the most important parts of a system like this is
+                communication. There were two main issues we had to solve when
+                developing this system: CPU utilization and packet structure.
+            </p>
+            <p>
+                Most common microcontroller serial communicaiton systems loop in
+                the CPU to handle sending the serial data to its UART
+                peripheral. While this is ok for many scenarios, it is crucial
+                that in our scenario, most of the CPU's time is spent elsewhere.
+                For this reason, we use the a feature of STM32 and many
+                microcontrollers called DMA, as well as a circular buffer for
+                handling bursts of input. DMA, or direct memory access, is a
+                peripheral in our microcontroller that handles routing data from
+                a specified memory location to a specified peripheral, all in
+                hardware! By pointing this to the data we want to send and the
+                UART peripheral, memory transfer is handled automatically
+                without any CPU intervention. For scenarios when data is
+                requested for sending faster than the UART peripheral can send
+                it (based on its BAUD rate), we have also implemented a buffer
+                to queue data in memory. The code is shown below:
+            </p>
+            <SyntaxHighlighter
+                language="c"
+                style={monoBlue}
+                id="syntax"
+            >{`#include "dmacirc.h"
+#include <string.h>
+
+#define TX_QUEUE_LEN 256
+#define TX_ITEM_SIZE 36
+
+// tx item
+typedef struct
+{
+    uint8_t data[TX_ITEM_SIZE];
+    uint64_t len;
+} tx_item;
+
+// uart object
+UART_HandleTypeDef *u;
+
+tx_item tx_queue[TX_QUEUE_LEN];
+volatile uint8_t tx_head = 0;
+volatile uint8_t tx_tail = 0;
+volatile uint8_t dma_active = 0;
+
+void dmasendinit(UART_HandleTypeDef *n)
+{
+    u = n;
+}
+
+void dmasend(uint8_t *data, uint16_t size)
+{
+    int next = (tx_head + 1) % TX_QUEUE_LEN;
+
+    if (next == tx_tail)
+    {
+        // queue full
+        return;
+    }
+
+    memcpy(tx_queue[tx_head].data, data, size);
+    tx_queue[tx_head].len = size;
+
+    uint8_t start_dma = 0;
+
+    __disable_irq();
+    tx_head = next; // Update head
+
+    if (!dma_active) // Check if we need to start
+    {
+        dma_active = 1;
+        start_dma = 1; // Use a flag to start outside the critical section
+    }
+    __enable_irq();
+
+    if (start_dma)
+    {
+        HAL_UART_Transmit_DMA(u, tx_queue[tx_tail].data, tx_queue[tx_tail].len);
+    }
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+
+    if (huart != u)
+        return;
+
+    // move tail forward
+    tx_tail = (tx_tail + 1) % TX_QUEUE_LEN;
+
+    // check for continuing transmit
+    if (tx_tail != tx_head)
+    {
+        HAL_UART_Transmit_DMA(u, tx_queue[tx_tail].data, tx_queue[tx_tail].len);
+    }
+    else
+    {
+        dma_active = 0;
+    }
+}`}</SyntaxHighlighter>
+            <p>
+                Upon call to our custom dmasend, data is added to the queue for
+                handling by the DMA peripheral as soon as it can.
+            </p>
+            <p>
+                When looking at packet structure, a good first question to
+                answer is: "why packets?" To answer this, first consider what is
+                actually happening on the serial line. The line can take one of
+                two states: high (3.3v) or low (0v). Somehow, we have to
+                translate these voltages or 1s and 0s to useable data. To do
+                this, we have to know when any particular data stream is
+                starting or stopping. For example, if I'm searching for a
+                pattern of <i>01001</i> in the stream: <i>01001001</i>, I find
+                two instances, but I don't know which one is correct! At the
+                hardware level, this bit ambiguity is solved by framing
+                protocols involving known start bits, stop bits, and other
+                features depending on the particular spec. See{" "}
+                <Link
+                    to="https://www.analog.com/en/resources/analog-dialogue/articles/uart-a-hardware-communication-protocol.html"
+                    target="_blank"
+                >
+                    this article
+                </Link>{" "}
+                for more info. This protocol leaves the user (Sebastian and I)
+                with a very specific question: How to transfer useable data as a
+                stream of bytes?
+            </p>
+            <p>
+                At first it seems trivial: just send the data over the line
+                encoded in binary. Many, many problems arise in this case, such
+                as:{" "}
+                <ul>
+                    <li>What type of data am I receiving at any given time?</li>
+                    <li>
+                        I want to send a 16 bit integer. How does the receiving
+                        end know which two bytes go together?
+                    </li>
+                    <li>
+                        If there are multiple potential senders of data, how do
+                        I know who my data is from?
+                    </li>
+                </ul>
+                It is quesitons like these and many others that we answered
+                using our custom serial byte packetization protocol:{" "}
+                <i>XPLink</i>.
+            </p>
+            <p>An XPLink packet is defined as the following:</p>
+            <Packet
+                names={[
+                    "COBS Header",
+                    "Sender ID",
+                    "Packet Type",
+                    "Data x7",
+                    "Checksum",
+                    "0x00 (end byte)",
+                ]}
+                labels={[
+                    "Byte 1",
+                    "Byte 2",
+                    "Byte 3",
+                    "Bytes 4-10",
+                    "Byte 11",
+                    "Byte 12",
+                ]}
+            ></Packet>
+            <p>
+                Using this twelve byte packet structure, information is now
+                available about the packet type, the sender, and the packet can
+                even be checked for accurate transmission using the{" "}
+                <Link
+                    to="https://en.wikipedia.org/wiki/Checksum"
+                    target="_blank"
+                >
+                    checksum
+                </Link>{" "}
+                byte at the end. You may have also noticed the end byte of all
+                zeros. This gives us a way to know when one packet ends and one
+                starts, allowing us to decode any given stream of data into the
+                relevant information.
+            </p>
+            <p>
+                What happens though if, for example, out pressure sensor wants
+                to send a temperature of zero? A byte of zeros might make its
+                way into the data section and would result in a false packet end
+                byte. To get around this issue, we implement Consistent Overhead
+                Byte-Stuffing, or COBS. COBS provides a method of removing this
+                ambiguity around the end byte. To do this, Take the following 5
+                bytes of data as an example:
+            </p>
+            <h4>5 Bytes Example Data</h4>
+            <br></br>
+            <div style={{ width: "75%", margin: "auto" }}>
+                <Packet
+                    names={["0xAA", "0xC3", "0x00", "0x03", "0x00"]}
+                    labels={[
+                        "Data Byte 1",
+                        "Data Byte 2",
+                        "Data Byte 3",
+                        "Data Byte 4",
+                        "Data Byte 5",
+                    ]}
+                ></Packet>
+            </div>
+            <p>
+                {" "}
+                if we packaged this up, adding 0x00 to the end as a delimiter,
+                the end would be ambiguious! The other two 0x00 bytes in our
+                data would create a signal that it is the end of the byte, even
+                though it is the middle of our data. To solve this, a COBS
+                header is added along with the end byte:
+            </p>
+            <h4>Unencoded Example Packet</h4>
+            <br></br>
+            <Packet
+                names={["0x03", "0xAA", "0xC3", "0x00", "0x03", "0x00", "0x00"]}
+                labels={[
+                    "COBS HEADER",
+                    "Data Byte 1",
+                    "Data Byte 2",
+                    "Data Byte 3",
+                    "Data Byte 4",
+                    "Data Byte 5",
+                    "End Byte",
+                ]}
+            ></Packet>
+            <p>
+                From here, we can eliminate all zero valued data bytes with a
+                simple procedure. to start, we set the value of COBS header to
+                the index of the first occuring 0. In this case, the third data
+                byte is a 0, so we set the COBS header to 0x03. Next, we replace
+                the first occuring zero with the number of data bytes to the
+                next occuring zero. In this case it becomes 2, as there are two
+                data bytes between Byte 3 and Byte 5. This pattern continues
+                until the following COBS encoded packet is formed:
+            </p>
+            <h4>COBS Encoded Example Packet</h4>
+            <br></br>
+            <Packet
+                names={["0x03", "0xAA", "0xC3", "0x02", "0x03", "0x01", "0x00"]}
+                labels={[
+                    "COBS HEADER",
+                    "Data Byte 1",
+                    "Data Byte 2",
+                    "Data Byte 3",
+                    "Data Byte 4",
+                    "Data Byte 5",
+                    "End Byte",
+                ]}
+            ></Packet>
+            <p>
+                As you can see, data bytes 3 and 5, which were previously zeros,
+                now contain a value pointing to what was the next occuring zero
+                in the stream. Importantly, the end byte is left untouched.
+            </p>
+            <p>
+                Finally, this version contains only one zero and our firmware
+                can use it to delimit our stream of bytes. This is the stream
+                that gets sent over the line. Crucially, the original data can
+                be reclaimed by following the encoding procedure in reverse.
+            </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 Finite State Machine
             </h4>
