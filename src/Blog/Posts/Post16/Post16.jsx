@@ -352,10 +352,16 @@ export default function Post16() {
                 .
             </p>
             <p>
-                The board consists of four layers which from top to bottom are:
+                The board consists of four layers which from bottom to top are:
                 signal, power, ground, signal. While we have no extremely high
                 speed signals, care was still taken to maintain signal integrity
                 especially on our SPI busses and USB routes.
+            </p>
+            <p>
+                Although not required to be compact, we optimized as much as
+                possible for the sake of future-proofing. The board should be
+                small enough that its size does not need to be taken into
+                consideration when it comes time to design a vehicle.
             </p>
             <h4 style={{ textAlign: "left", fontSize: "1.5rem" }}>
                 PCB Assembly

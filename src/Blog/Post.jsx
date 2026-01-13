@@ -23,7 +23,10 @@ export default function Post() {
     useEffect(() => {
         let found = false;
         posts.forEach((post) => {
-            if (post.id == id && post.public) {
+            if (
+                post.id == id &&
+                (post.public === true || post.public == "dev")
+            ) {
                 setcurrpost(post);
                 found = true;
             }

@@ -43,7 +43,7 @@ export default function Sortedposts({ sort }) {
             {/*Grid Wrapper*/}
             <div id="gridwrapper">
                 {hereposts.map((post, index) =>
-                    post.public ? (
+                    post.public === true ? (
                         <div key={post.id}>
                             <div style={{ padding: "10px" }}>
                                 <Card
